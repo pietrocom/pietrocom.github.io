@@ -1,0 +1,41 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('../img/minha-foto.jpg') no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5%;
+    color: white;
+    text-align: right;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero p {
+    font-size: 2rem;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        justify-content: center;
+        text-align: center;
+        padding-right: 0;
+    }
+}
