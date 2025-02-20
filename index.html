@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pietro Comin</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="assets/js/script.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="portfolio.html">Portfólio</a></li>
-                <li><a href="resume.html">Currículo</a></li>
-                <li><a href="contact.html">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header"></div>
     
     <main>
         <section class="hero">
             <h1>Bem-vindo ao meu site!</h1>
             <p>Eu sou Pietro Comin. Aqui você encontra meu portfólio e currículo.</p>
         </section>
+        <section class="about" data-aos="fade-up">
+            <h2>Sobre Mim</h2>
+            <p>Sou um desenvolvedor apaixonado por tecnologia e inovação. Este site é um espaço para mostrar meus projetos, experiências e trajetória profissional.</p>
+        </section>
     </main>
     
-    <footer>
-        <p>&copy; 2025 Pietro Comin. Todos os direitos reservados.</p>
-    </footer>
+    <div id="footer"></div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, 
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
 </body>
 </html>
