@@ -12,7 +12,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Cabeçalho fixo e responsivo */
+/* Cabeçalho fixo */
 header {
     position: fixed;
     top: 0;
@@ -30,15 +30,7 @@ header.shrink {
     padding: 10px 30px;
 }
 
-/* Ícones sociais */
-.social-icons a {
-    color: #333;
-    font-size: 20px;
-    margin-right: 15px;
-    text-decoration: none;
-}
-
-/* Links da navegação em linha */
+/* Links do menu na esquerda */
 nav ul {
     list-style: none;
     display: flex;
@@ -56,23 +48,34 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
+/* Destacar a página ativa */
+nav ul li a.active {
     color: #91E8DD;
+    font-weight: bold;
 }
 
-/* Menu responsivo */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
+/* Ícones sociais */
+.social-icons {
+    display: flex;
+    gap: 15px;
 }
 
-/* Seção principal com a imagem */
+.social-icons a {
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Ajustando posição */
+header nav {
+    flex: 1;
+}
+
+/* Seção principal com imagem */
 .hero {
     width: 100%;
     height: 100vh;
-    background: url('../images/ImagemNeveEditada.png') no-repeat center center/cover;
+    background: url('../images/imagem_que_quero.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
