@@ -22,6 +22,7 @@ function highlightActivePage() {
 
     let links = document.querySelectorAll("nav ul li a");
     links.forEach(link => {
+        link.classList.remove("active");
         if (link.getAttribute("href") === currentPage) {
             link.classList.add("active");
         }
@@ -44,3 +45,13 @@ document.addEventListener("click", function (event) {
         document.querySelector("nav ul").classList.toggle("show");
     }
 });
+
+// Fechar o menu ao clicar fora
+document.addEventListener("click", function (event) {
+    const menu = document.querySelector("nav ul");
+    const toggle = document.getElementById("menu-toggle");
+    if (event.target !== toggle && !toggle.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.remove("show");
+    }
+});
+
