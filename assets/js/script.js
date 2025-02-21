@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
-    fetch("header.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("header").innerHTML = data);
-    
-    fetch("footer.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("footer").innerHTML = data);
+// Redução do cabeçalho ao rolar
+window.addEventListener("scroll", function () {
+    const header = document.getElementById("header");
+    if (window.scrollY > 50) {
+        header.classList.add("shrink");
+    } else {
+        header.classList.remove("shrink");
+    }
+});
+
+// Menu Mobile
+document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.querySelector("nav ul").classList.toggle("show");
 });

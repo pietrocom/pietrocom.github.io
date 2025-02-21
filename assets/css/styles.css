@@ -1,52 +1,125 @@
-body, html {
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
 }
 
-.hero {
-    position: relative;
+body {
+    background-color: #38DCC8;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Estilizando o cabeçalho */
+header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 100vh;
-    background: url('../img/minha-foto.jpg') no-repeat center;
-    background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-right: 5%;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+header.shrink {
+    padding: 10px 30px;
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 20px;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #91E8DD;
+}
+
+/* Menu responsivo */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilo da seção principal */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url('sua-imagem.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.hero .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero .content {
+    position: relative;
     color: white;
-    text-align: right;
 }
 
-.hero h1, .hero p {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
 }
 
-.hero.visible h1, .hero.visible p {
-    opacity: 1;
-    transform: translateY(0);
+.hero p {
+    font-size: 20px;
+    font-style: italic;
+    font-family: Georgia, serif;
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
-    .hero {
-        justify-content: center;
-        text-align: center;
-        padding-right: 0;
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px;
     }
-}
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
+    nav ul.show {
+        display: flex;
+    }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+    .menu-toggle {
+        display: block;
+    }
 }

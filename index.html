@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pietro Comin</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script defer src="assets/js/script.js"></script>
+    <title>Meu Site Pessoal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="header"></div>
-    
-    <main>
-        <section class="hero">
-            <h1>Bem-vindo ao meu site!</h1>
-            <p>Eu sou Pietro Comin. Aqui você encontra meu portfólio e currículo.</p>
-        </section>
-        <section class="about" data-aos="fade-up">
-            <h2>Sobre Mim</h2>
-            <p>Sou um desenvolvedor apaixonado por tecnologia e inovação. Este site é um espaço para mostrar meus projetos, experiências e trajetória profissional.</p>
-        </section>
-    </main>
-    
-    <div id="footer"></div>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000, 
-            easing: 'ease-in-out',
-            once: true
-        });
-    </script>
+
+    <header id="header">
+        <div class="social-icons">
+            <a href="https://instagram.com/seu_perfil" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/seu_perfil" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active">Página Inicial</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Currículo</a></li>
+                <li><a href="#">Portfólio</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Seu Nome</h1>
+            <p>Estudante de Ciência da Computação <br> UFPR</p>
+        </div>
+    </div>
+
 </body>
 </html>
