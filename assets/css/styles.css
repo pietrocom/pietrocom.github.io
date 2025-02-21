@@ -96,6 +96,8 @@ header nav {
 .hero .content {
     position: relative;
     color: white;
+    padding-left: 20%; /* Movendo o conteúdo para a direita */
+    text-align: left; /* Alinhar o texto à esquerda */
 }
 
 .hero h1 {
@@ -107,6 +109,66 @@ header nav {
     font-size: 20px;
     font-style: italic;
     font-family: Georgia, serif;
+}
+
+/* Estilos para a seção "Sobre Mim" */
+#sobre-mim {
+    background-color: #38DCC8;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-mim-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.foto-container img {
+    width: 300px; /* Ajuste o tamanho da foto */
+    height: auto;
+    position: relative;
+    bottom: -50px; /* Ajuste para a foto "sair" da base */
+}
+
+.quadrado {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.quadrado p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.texto-container {
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.texto-container p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* Responsividade */
@@ -129,5 +191,35 @@ header nav {
 
     .menu-toggle {
         display: block;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .sobre-mim-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .foto-container img {
+        width: 200px;
+        bottom: -30px;
+    }
+
+    .quadrado {
+        top: 10px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .texto-container {
+        width: 100%;
+        margin-top: 20px;
     }
 }

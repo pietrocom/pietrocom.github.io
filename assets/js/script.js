@@ -41,17 +41,23 @@ window.addEventListener("scroll", function () {
 
 // Menu Mobile
 document.addEventListener("click", function (event) {
-    if (event.target.id === "menu-toggle") {
-        document.querySelector("nav ul").classList.toggle("show");
-    }
-});
-
-// Fechar o menu ao clicar fora
-document.addEventListener("click", function (event) {
     const menu = document.querySelector("nav ul");
     const toggle = document.getElementById("menu-toggle");
-    if (event.target !== toggle && !toggle.contains(event.target) && !menu.contains(event.target)) {
+    if (event.target === toggle) {
+        menu.classList.toggle("show");
+    } else if (!menu.contains(event.target) && !toggle.contains(event.target)) {
         menu.classList.remove("show");
     }
 });
 
+// Scroll suave para as seções
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
