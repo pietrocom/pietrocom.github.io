@@ -17,6 +17,8 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
@@ -27,16 +29,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
     transition: all 0.3s ease; /* Transição suave para efeitos */
-    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
 }
 
 /* Efeito de redução ao rolar */
-header.shrink {
+header.shrink .header-content {
     padding: 10px 30px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo mais opaco ao rolar */
 }
 
 /* Links do menu */
@@ -66,9 +64,14 @@ nav ul li a.active {
 }
 
 .social-icons a {
-    color: #333;
-    font-size: 20px;
+    color: #333; /* Cor dos ícones */
+    font-size: 20px; /* Tamanho dos ícones */
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #91E8DD; /* Cor ao passar o mouse */
 }
 
 /* Menu mobile */
@@ -129,23 +132,36 @@ nav ul li a.active {
     max-width: 1200px; /* Limita a largura do conteúdo */
     margin: 0 auto;
     position: relative;
+    gap: 40px; /* Espaço entre a moldura e o texto */
 }
 
-/* Container da foto */
-.foto-container {
+/* Container da Moldura */
+.moldura-container {
+    flex: 1; /* Ocupa 1 parte do espaço disponível */
     position: relative;
 }
 
-.foto-container img {
-    width: 300px; /* Tamanho da foto */
-    height: auto;
+/* Moldura */
+.moldura {
+    width: 400px; /* Tamanho da moldura */
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+    border: 10px solid #38DCC8; /* Borda da moldura */
+    position: relative;
+    overflow: hidden;
+}
+
+.moldura img {
+    width: 100%; /* A imagem se ajusta ao quadrado interno */
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
     position: relative;
     bottom: -50px; /* Faz a foto "sair" da base */
     filter: grayscale(100%) brightness(90%) sepia(30%) hue-rotate(180deg); /* Filtro personalizado */
 }
 
-/* Quadrado com o texto "SOBRE MIM" */
-.quadrado {
+/* Texto "SOBRE MIM" dentro da moldura */
+.texto-moldura {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -153,34 +169,59 @@ nav ul li a.active {
     height: 150px;
     background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 10px;
-    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #38DCC8; /* Borda do quadrado interno */
 }
 
-.quadrado p {
+.texto-moldura p {
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin: 0;
     line-height: 1.2;
+    text-align: center;
 }
 
-/* Container do texto */
+/* Container do texto à direita */
 .texto-container {
-    width: 60%;
+    flex: 2; /* Ocupa 2 partes do espaço disponível */
     background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 500px; /* Largura máxima do texto */
+    height: auto; /* Altura ajustável */
 }
 
 .texto-container p {
     font-size: 16px;
     color: #333;
     line-height: 1.6;
+    margin: 0;
 }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    .sobre-mim-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .moldura {
+        width: 300px;
+        height: 300px;
+    }
+
+    .texto-moldura {
+        width: 120px;
+        height: 120px;
+    }
+
+    .texto-container {
+        width: 100%;
+    }
+
 
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
@@ -237,3 +278,4 @@ nav ul li a.active {
         width: 100%;
         margin-top: 20px;
     }
+}
