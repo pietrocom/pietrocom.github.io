@@ -1,4 +1,4 @@
-/* Reset básico */
+/* ===== RESET BÁSICO ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,41 +7,38 @@
 }
 
 body {
-    background-color: #38DCC8;
-    color: #333;
-    overflow-x: hidden;
+    background-color: #38DCC8; /* Cor de fundo principal */
+    color: #333; /* Cor do texto padrão */
+    overflow-x: hidden; /* Evita rolagem horizontal */
 }
 
-/* Cabeçalho fixo */
+/* ===== CABEÇALHO ===== */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* Limita a largura do cabeçalho */
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px;
-    background-color: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
-    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+    transition: all 0.3s ease; /* Transição suave para efeitos */
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
 }
 
+/* Efeito de redução ao rolar */
 header.shrink {
     padding: 10px 30px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo mais opaco ao rolar */
 }
 
-/* Links do menu na esquerda */
+/* Links do menu */
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-}
-
-nav ul li {
-    display: inline;
 }
 
 nav ul li a {
@@ -53,7 +50,7 @@ nav ul li a {
 
 /* Destacar a página ativa */
 nav ul li a.active {
-    color: #91E8DD;
+    color: #91E8DD; /* Cor da paleta para o link ativo */
     font-weight: bold;
 }
 
@@ -69,15 +66,16 @@ nav ul li a.active {
     text-decoration: none;
 }
 
-/* Ajustando posição */
-header nav {
-    flex: 1;
+/* Menu mobile */
+.menu-toggle {
+    display: none; /* Escondido por padrão */
+    cursor: pointer;
 }
 
-/* Seção principal com imagem */
+/* ===== SEÇÃO PRINCIPAL (HERO) ===== */
 .hero {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Cobrir a tela inteira */
     background: url('../images/ImagemNeveEditada.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
@@ -90,7 +88,7 @@ header nav {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3); /* Overlay escuro para melhor contraste */
 }
 
 .hero .content {
@@ -111,9 +109,9 @@ header nav {
     font-family: Georgia, serif;
 }
 
-/* Estilos para a seção "Sobre Mim" */
+/* ===== SEÇÃO "SOBRE MIM" ===== */
 #sobre-mim {
-    background-color: #38DCC8;
+    background-color: #38DCC8; /* Cor de fundo da seção */
     padding: 50px 20px;
     position: relative;
     overflow: hidden;
@@ -123,25 +121,32 @@ header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1200px; /* Limita a largura do conteúdo */
     margin: 0 auto;
     position: relative;
 }
 
-.foto-container img {
-    width: 300px; /* Ajuste o tamanho da foto */
-    height: auto;
+/* Container da foto */
+.foto-container {
     position: relative;
-    bottom: -50px; /* Ajuste para a foto "sair" da base */
 }
 
+.foto-container img {
+    width: 300px; /* Tamanho da foto */
+    height: auto;
+    position: relative;
+    bottom: -50px; /* Faz a foto "sair" da base */
+    filter: grayscale(100%) brightness(90%) sepia(30%) hue-rotate(180deg); /* Filtro personalizado */
+}
+
+/* Quadrado com o texto "SOBRE MIM" */
 .quadrado {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 150px;
     height: 150px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -157,12 +162,13 @@ header nav {
     line-height: 1.2;
 }
 
+/* Container do texto */
 .texto-container {
     width: 60%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .texto-container p {
@@ -171,8 +177,9 @@ header nav {
     line-height: 1.6;
 }
 
-/* Responsividade */
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
+    /* Menu mobile */
     nav ul {
         display: none;
         flex-direction: column;
@@ -193,6 +200,7 @@ header nav {
         display: block;
     }
 
+    /* Ajustes para a seção Hero */
     .hero h1 {
         font-size: 36px;
     }
@@ -201,6 +209,7 @@ header nav {
         font-size: 16px;
     }
 
+    /* Ajustes para a seção "Sobre Mim" */
     .sobre-mim-container {
         flex-direction: column;
         align-items: flex-start;
