@@ -135,3 +135,21 @@ window.addEventListener("scroll", function () {
         sobreMim.classList.add("visible");
     }
 });
+
+// Botao Iniciais
+document.addEventListener("DOMContentLoaded", function () {
+    function setupReloadButton() {
+        const initialsButton = document.querySelector('.initials-button');
+        if (initialsButton) {
+            initialsButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.location.reload();
+            });
+        }
+    }
+
+    setupReloadButton(); // Tenta configurar o botão imediatamente
+
+    // Se o botão for carregado dinamicamente, aguarde e tente de novo
+    setTimeout(setupReloadButton, 500);
+});

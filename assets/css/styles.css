@@ -40,7 +40,36 @@ body {
     overflow-x: hidden;
 }
 
+
 /* ===== CABEÇALHO ===== */
+
+/* Botão com iniciais "PC" */
+.initials-button {
+    position: relative;
+    left: -80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Tamanho do botão */
+    height: 50px; /* Tamanho do botão */
+    font-family: 'Montserrat', sans-serif; /* Fonte Montserrat */
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso Medium */
+    font-style: italic; /* Estilo Itálico */
+    color: var(--cor-texto); /* Cor do texto */
+    text-decoration: none;
+    border: 2px solid var(--cor-texto); /* Moldura fina */
+    border-radius: 12px; /* Bordas arredondadas */
+    background-color: transparent; /* Fundo transparente */
+    transition: all 0.3s ease;
+}
+
+.initials-button:hover {
+    background-color: var(--cor-texto); /* Fundo ao passar o mouse */
+    color: var(--cor-branca); /* Cor do texto ao passar o mouse */
+    border-color: var(--cor-texto); /* Cor da moldura ao passar o mouse */
+}
+
 header {
     position: fixed;
     top: 0;
@@ -54,16 +83,30 @@ header {
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 30px;
+    padding: 15px 30px 15px 0px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: all 0.3s ease; /* Transição suave para efeitos */
+    transition: all 0.3s ease;
 }
 
 /* Efeito de redução ao rolar */
 header.shrink .header-content {
     padding: 10px 30px;
+}
+
+nav {
+    margin-right: auto;
+    padding-left: 10px; 
+}
+
+/* Links do menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Links do menu */
@@ -72,6 +115,23 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
+}
+
+nav ul li {
+    position: relative; /* Permite posicionar o pseudo-elemento */
+    padding: 0 20px; /* Espaçamento entre os itens */
+}
+
+/* Adiciona a linha vertical entre os itens */
+nav ul li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px; /* Posiciona a linha no final do item */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    width: 1px; /* Espessura da linha */
+    height: 60%; /* Altura da linha */
+    background-color: #ccc; /* Cor da linha */
 }
 
 nav ul li a {
@@ -89,7 +149,8 @@ nav ul li a.active {
 
 /* Ícones sociais */
 .social-icons {
-    display: flex;
+    margin-left: auto;
+    display: flex; 
     gap: 15px;
     margin: 0;
     padding: 0;
@@ -97,7 +158,7 @@ nav ul li a.active {
 
 .social-icons a {
     color: var(--cor-texto);
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -154,7 +215,9 @@ nav ul li a.active {
     font-family: Georgia, serif;
 }
 
+
 /* ===== SEÇÃO "SOBRE MIM" ===== */
+
 #sobre-mim {
     background-color: var(--cor-fundo); /* Cor de fundo turquesa */
     padding: 50px 20px;
@@ -199,10 +262,10 @@ nav ul li a.active {
 /* Moldura com Texto "SOBRE MIM!" */
 .texto-moldura {
     position: absolute;
-    top: 100px; 
-    left: 235px; 
-    width: 330px; 
-    height: 330px; 
+    top: 80px; 
+    left: 225px; 
+    width: 360px; 
+    height: 360px; 
     border: 10px solid var(--cor-branca); /* Moldura mais grossa */
     background-color: transparent; /* Fundo transparente */
     display: flex;
@@ -232,7 +295,7 @@ nav ul li a.active {
     border-radius: 0; /* Remove o arredondamento */
     box-shadow: none; /* Remove a sombra */
     max-width: 500px;
-    height: auto;
+    height: 335px;
 }
 
 .texto-container p {
