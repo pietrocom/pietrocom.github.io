@@ -183,7 +183,6 @@ nav ul li a.active {
     text-align: center;
 }
 
-/* Container do texto à direita */
 .texto-container {
     flex: 2; /* Ocupa 2 partes do espaço disponível */
     background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
@@ -222,9 +221,6 @@ nav ul li a.active {
         width: 100%;
     }
 
-
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 768px) {
     /* Menu mobile */
     nav ul {
         display: none;
@@ -245,7 +241,6 @@ nav ul li a.active {
     .menu-toggle {
         display: block;
     }
-}
 
     /* Ajustes para a seção Hero */
     .hero h1 {
@@ -254,28 +249,5 @@ nav ul li a.active {
 
     .hero p {
         font-size: 16px;
-    }
-
-    /* Ajustes para a seção "Sobre Mim" */
-    .sobre-mim-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .foto-container img {
-        width: 200px;
-        bottom: -30px;
-    }
-
-    .quadrado {
-        top: 10px;
-        left: 10px;
-        width: 120px;
-        height: 120px;
-    }
-
-    .texto-container {
-        width: 100%;
-        margin-top: 20px;
     }
 }
