@@ -8,7 +8,7 @@
     <script defer src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/e144b520fb.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="topo">
 
     <div id="header-container"></div> <!-- O header será carregado dinamicamente -->
 
@@ -20,14 +20,12 @@
         </div>
     </div>
 
-    <!-- Seção "Sobre Mim" -->
-    <div id="sobre-mim" class="section">
+    <!-- Seção "sobre-mim" -->
+    <section id="sobre-mim" class="section"> <!-- Alterado de <div> para <section> -->
         <div class="sobre-mim-container">
-            <!-- Moldura e Imagem -->
-            <div class="moldura-container">
-                <div class="moldura">
-                    <img src="assets/images/HotelBahiaEditado.png" alt="Sua Foto">
-                </div>
+            <!-- Imagem com Moldura -->
+            <div class="imagem-container">
+                <img src="assets/images/ImagemBahiaTeste.png" alt="Sua Foto">
                 <div class="texto-moldura">
                     <p>SOBRE<br>MIM</p>
                 </div>
@@ -38,7 +36,20 @@
                 <p>Futuro empreendedor, sou apaixonado por música, investimentos, tecnologia e inovação. Cursando Ciência da Computação, busco unir meu espírito empreendedor ao conhecimento técnico para transformar ideias em realidade.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Adicione mais seções conforme necessário -->
+    <section id="curriculo" class="section"> <!-- Exemplo de outra seção -->
+        <div class="curriculo-container">
+            <!-- Conteúdo do currículo -->
+        </div>
+    </section>
+
+    <section id="portfolio" class="section"> <!-- Exemplo de outra seção -->
+        <div class="portfolio-container">
+            <!-- Conteúdo do portfólio -->
+        </div>
+    </section>
 
     <div id="footer-container"></div> <!-- O footer será carregado dinamicamente -->
 
