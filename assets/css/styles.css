@@ -17,7 +17,7 @@
 :root {
     --cor-primaria: #38DCC8; /* Turquesa */
     --cor-secundaria: #91E8DD; /* Turquesa mais claro */
-    --cor-fundo: #38DCC8; /* Cor de fundo da seção */
+    --cor-fundo: #39cab9; /* Cor de fundo da seção */
     --cor-texto: #333; /* Cor do texto padrão */
     --cor-branca: rgba(255, 255, 255, 1); /* Branco sólido */
     --sombra: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
@@ -138,23 +138,23 @@ nav ul li a.active {
     color: #259689;
 }
 
-/* Ícones sociais */
-.social-icons {
+/* Ícones sociais no header */
+header .social-icons {
     margin-left: auto;
-    display: flex; 
+    display: flex;
     gap: 15px;
     margin: 0;
     padding: 0;
 }
 
-.social-icons a {
+header .social-icons a {
     color: var(--cor-texto);
     font-size: 25px;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.social-icons a:hover {
+header .social-icons a:hover {
     color: var(--cor-secundaria);
 }
 
@@ -293,6 +293,133 @@ nav ul li a.active {
     color: var(--cor-branca); /* Texto branco */
     line-height: 1.8;
     margin: 0;
+}
+
+/* Linhas de Separação */
+.linhas-separacao {
+    position: relative;
+    background-color: transparent; 
+    padding: 20px 0;
+    margin-top: -70px; /* Ajuste conforme necessário */
+    z-index: 100; 
+}
+
+.linha-grossa {
+    height: 4px;
+    background-color: var(--cor-branca); /* Cor da linha */
+    margin: 0 auto;
+    width: 90%; /* Aumente ou diminua conforme necessário */
+}
+
+.linha-fina {
+    height: 2px;
+    background-color: var(--cor-branca); /* Cor da linha */
+    margin: 10px auto 0;
+    width: 80%; /* Aumente ou diminua conforme necessário */
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #2a9d8f; /* Cor mais escura */
+    color: var(--cor-branca);
+    padding: 40px 20px 20px;
+    font-family: 'Avenir Light', sans-serif;
+    position: relative;
+    z-index: 10000;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+    padding-right: 20px; /* Espaçamento à direita */
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Linha fina */
+}
+
+/* Remove a borda da última coluna */
+.footer-column:last-child {
+    border-right: none;
+    padding-right: 0; /* Remove o espaçamento à direita */
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--cor-branca);
+    font-family: 'Lulo Clean', sans-serif;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--cor-secundaria);
+}
+
+.footer-column ul li i {
+    margin-right: 10px;
+    color: var(--cor-secundaria);
+}
+
+/* Ícones sociais no footer */
+.footer-column .social-icons {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+.footer-column .social-icons .social-item {
+    display: flex;
+    align-items: center; /* Alinha ícone e texto verticalmente */
+    gap: 10px; /* Espaçamento entre ícone e texto */
+}
+
+.footer-column .social-icons .social-item a {
+    color: var(--cor-branca); /* Cor do ícone */
+    font-size: 28px; /* Tamanho do ícone aumentado */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column .social-icons .social-item a:hover {
+    color: var(--cor-secundaria); /* Cor ao passar o mouse */
+}
+
+.footer-column .social-icons .social-item span {
+    color: var(--cor-branca); /* Cor do texto */
+    font-size: 16px; /* Tamanho do texto */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: var(--cor-branca);
 }
 
 /* ===== RESPONSIVIDADE ===== */

@@ -124,15 +124,17 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// Efeito de transição Hero - Sobre Mim
+// Efeito de transição Hero - Sobre Mim e Linhas de Separação
 window.addEventListener("scroll", function () {
     const sobreMim = document.querySelector("#sobre-mim");
+    const linhasSeparacao = document.querySelector(".linhas-separacao");
     const sobreMimPosition = sobreMim.getBoundingClientRect().top;
     const screenHeight = window.innerHeight;
 
     // Ativa a animação quando a seção "Sobre Mim" entra na tela
     if (sobreMimPosition < screenHeight * 0.75) {
         sobreMim.classList.add("visible");
+        linhasSeparacao.classList.add("visible");
     }
 });
 
