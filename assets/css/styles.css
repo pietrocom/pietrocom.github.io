@@ -40,7 +40,6 @@ body {
     overflow-x: hidden;
 }
 
-
 /* ===== CABEÇALHO ===== */
 
 /* Botão com iniciais "PC" */
@@ -105,14 +104,6 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-/* Links do menu */
-nav ul {
-    list-style: none;
-    display: flex;
     margin: 0;
     padding: 0;
 }
@@ -214,7 +205,6 @@ nav ul li a.active {
     font-style: italic;
     font-family: Georgia, serif;
 }
-
 
 /* ===== SEÇÃO "SOBRE MIM" ===== */
 
