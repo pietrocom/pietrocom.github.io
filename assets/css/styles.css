@@ -15,9 +15,10 @@
 
 /* ===== VARIÁVEIS CSS ===== */
 :root {
-    --cor-primaria: #38DCC8; /* Turquesa */
-    --cor-secundaria: #91E8DD; /* Turquesa mais claro */
-    --cor-fundo: #39cab9; /* Cor de fundo da seção */
+    --cor-primaria: #2c3c64; 
+    --cor-secundaria: #91E8DD; 
+    --cor-terciaria: #ebc661;
+    --cor-fundo: #273557; 
     --cor-texto: #333; /* Cor do texto padrão */
     --cor-branca: rgba(255, 255, 255, 1); /* Branco sólido */
     --sombra: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
@@ -207,7 +208,6 @@ header .social-icons a:hover {
 }
 
 /* ===== SEÇÃO "SOBRE MIM" ===== */
-
 #sobre-mim {
     background-color: var(--cor-fundo); /* Cor de fundo turquesa */
     padding: 50px 20px;
@@ -224,6 +224,22 @@ header .social-icons a:hover {
     transform: translateY(0); /* Retorna à posição original */
 }
 
+/* Container da Imagem */
+.imagem-container {
+    width: 70%; /* Reduz o tamanho da imagem */
+    height: auto; /* Mantém a proporção */
+    margin-left: 100px; /* Ajuste fino de posição */
+    margin-top: 33px; /* Ajuste fino de posição */
+}
+
+.imagem-container img {
+    width: 46%; /* A imagem ocupa 100% do contêiner */
+    height: auto; /* Mantém a proporção */
+    object-fit: cover;
+    display: block;
+    transform: translateX(30px); /* Move a imagem para a direita */
+}
+
 .sobre-mim-container {
     display: flex;
     align-items: center;
@@ -231,37 +247,33 @@ header .social-icons a:hover {
     max-width: 1200px;
     margin: 0 auto;
     gap: 40px;
+    position: relative; /* Permite posicionar a moldura dentro deste contêiner */
 }
 
-/* Container da Imagem */
-.imagem-container {
+/* Contêiner da Imagem e Moldura */
+.imagem-moldura-container {
     flex: 1;
-    position: relative;
+    position: relative; /* Permite posicionar a moldura em relação a este contêiner */
     height: auto;
     max-width: 100%;
     overflow: hidden;
-}
-
-.imagem-container img {
-    width: 100%;
-    max-height: 800px;
-    object-fit: cover;
-    display: block;
+    margin-left: 170px; /* Move o contêiner para a esquerda */
+    margin-top: 30px; /* Move o contêiner para baixo */
 }
 
 /* Moldura com Texto "SOBRE MIM!" */
 .texto-moldura {
     position: absolute;
-    top: 80px; 
-    left: 225px; 
-    width: 360px; 
-    height: 360px; 
+    top: 0px; /* Ajuste o valor conforme necessário */
+    left: -60px; /* Ajuste o valor conforme necessário */
+    width: 380px; 
+    height: 380px; 
     border: 10px solid var(--cor-branca); /* Moldura mais grossa */
     background-color: transparent; /* Fundo transparente */
     display: flex;
     align-items: left;
     justify-content: left;
-    z-index: 1;
+    z-index: 2; /* Garante que a moldura fique acima da imagem */
 }
 
 .texto-moldura p {
@@ -276,23 +288,72 @@ header .social-icons a:hover {
     padding: 20px;
 }
 
+/* Container da Imagem */
+.imagem-container {
+    position: absolute; 
+    width: 70%; /* Reduz o tamanho da imagem */
+    height: auto; /* Mantém a proporção */
+    margin-left: 100px; /* Ajuste fino de posição */
+    margin-top: 44px; /* Ajuste fino de posição */
+}
+
+.imagem-container img {
+    width: 46%; /* A imagem ocupa 100% do contêiner */
+    height: auto; /* Mantém a proporção */
+    object-fit: cover;
+    display: block;
+}
+
 /* Container do texto à direita */
 .texto-container {
-    font-family: 'Avenir Light', sans-serif;
     flex: 2;
     background-color: transparent; /* Remove o fundo */
     padding: 30px;
     border-radius: 0; /* Remove o arredondamento */
     box-shadow: none; /* Remove a sombra */
     max-width: 500px;
-    height: 335px;
+    margin-left: auto; /* Alinha o texto à direita */
+    margin-right: 60px; /* Ajuste o valor conforme necessário */
 }
 
 .texto-container p {
-    font-size: 20px;
-    color: var(--cor-branca); /* Texto branco */
+    font-size: 18px;
+    color: var(--cor-terciaria);
     line-height: 1.8;
+    margin: 0 0 20px 0; 
+}
+
+/* Container de Interesses */
+.interesses-container h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-terciaria);
+    margin-bottom: 15px;
+    font-family: 'Lulo Clean', sans-serif;
+}
+
+.interesses-container ul {
+    list-style: none; /* Remove os marcadores padrão */
+    padding: 0;
     margin: 0;
+}
+
+.interesses-container ul li {
+    font-size: 18px;
+    color: var(--cor-terciaria);
+    line-height: 1.8;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px; /* Espaço para o ícone */
+}
+
+.interesses-container ul li::before {
+    content: "•"; /* Adiciona um marcador personalizado */
+    color: var(--cor-terciaria); /* Cor do marcador */
+    font-size: 24px;
+    position: absolute;
+    left: 0;
+    top: -2px;
 }
 
 /* Linhas de Separação */
@@ -320,7 +381,7 @@ header .social-icons a:hover {
 
 /* ===== FOOTER ===== */
 footer {
-    background-color: #2a9d8f; /* Cor mais escura */
+    background-color: var(--cor-primaria); 
     color: var(--cor-branca);
     padding: 40px 20px 20px;
     font-family: 'Avenir Light', sans-serif;
@@ -355,7 +416,7 @@ footer {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: var(--cor-branca);
+    color: var(--cor-terciaria);
     font-family: 'Lulo Clean', sans-serif;
 }
 
@@ -452,20 +513,27 @@ footer {
         align-items: center;
     }
 
-    .imagem-container img {
-        max-height: 400px;
+    .imagem-moldura-container {
+        margin-left: 0; /* Remove a margem esquerda em telas menores */
+        margin-top: 20px; /* Ajuste fino para telas menores */
     }
 
     .texto-moldura {
-        width: 150px;
-        height: 150px;
+        width: 200px; /* Reduz o tamanho da moldura em telas menores */
+        height: 200px;
         top: 10px;
-        left: 10px;
+        left: -50px; /* Ajuste fino para telas menores */
+    }
+
+    .imagem-container {
+        width: 100%; /* A imagem ocupa 100% do contêiner em telas menores */
+        margin-left: 0; /* Remove a margem esquerda em telas menores */
     }
 
     .texto-container {
         width: 100%;
-        margin-top: 20px;
+        margin-left: 0; /* Remove a margem esquerda em telas menores */
+        margin-right: 0; /* Remove a margem direita em telas menores */
     }
 
     /* Troca de posição entre ícones sociais e links do menu */
