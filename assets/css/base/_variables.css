@@ -1,0 +1,12 @@
+/* _variables.css */
+
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+    --cor-primaria: #2c3c64; 
+    --cor-secundaria: #91E8DD; 
+    --cor-terciaria: #ebc661;
+    --cor-fundo: #273557; 
+    --cor-texto: #333; /* Cor do texto padrão */
+    --cor-branca: rgba(255, 255, 255, 1); /* Branco sólido */
+    --sombra: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}

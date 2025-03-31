@@ -1,3 +1,5 @@
+// script.js
+
 // Função para carregar HTML de outro arquivo
 function loadComponent(id, file, callback) {
     fetch(file)
@@ -18,40 +20,61 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("footer-container", "footer.html");
 });
 
-// Configurar o scroll suave
+// Enhanced smooth scroll function
 function setupSmoothScroll() {
-    // Scroll suave para links com âncora
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault(); // Evita o comportamento padrão do link
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                // Scroll suave personalizado
-                smoothScrollTo(targetElement);
+    // Handle all navigation links (header and footer)
+    document.querySelectorAll('a[href^="#"], a[href^="/"], a[href^="."]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // Skip if target is external or has special attributes
+            if (this.hasAttribute('download') || this.getAttribute('target') === '_blank') {
+                return;
+            }
+            
+            const href = this.getAttribute('href');
+            
+            // Handle internal page links (like portfolio.html)
+            if (href.includes('.html')) {
+                // Allow normal navigation for .html links
+                return;
+            }
+            
+            // Handle anchor links
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    smoothScrollTo(targetElement);
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, href);
+                } else if (targetId === 'top') {
+                    // Special case for "back to top" links
+                    smoothScrollTo(document.body);
+                    history.pushState(null, null, '#top');
+                }
             }
         });
     });
 }
 
-// Função para scroll suave personalizado
+// Update your existing smoothScrollTo function if needed
 function smoothScrollTo(targetElement) {
-    const targetPosition = targetElement.offsetTop;
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 800; // Duração da animação em milissegundos
+    const duration = 800;
     let startTime = null;
 
     function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
+        if (!startTime) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
         const run = ease(timeElapsed, startPosition, distance, duration);
         window.scrollTo(0, run);
         if (timeElapsed < duration) requestAnimationFrame(animation);
     }
 
-    // Função de easing para suavizar a animação
     function ease(t, b, c, d) {
         t /= d / 2;
         if (t < 1) return c / 2 * t * t + b;
@@ -126,15 +149,20 @@ document.addEventListener("click", function (event) {
 
 // Efeito de transição Hero - Sobre Mim e Linhas de Separação
 window.addEventListener("scroll", function () {
-    const sobreMim = document.querySelector("#sobre-mim");
-    const linhasSeparacao = document.querySelector(".linhas-separacao");
-    const sobreMimPosition = sobreMim.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
+    const sobreMim = document.getElementById("about");
+    const linhasSeparacao = document.querySelector(".separation-lines");
+    
+    // Add robust null checks
+    if (sobreMim && linhasSeparacao && sobreMim.classList && linhasSeparacao.classList) {
+        const sobreMimPosition = sobreMim.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
 
-    // Ativa a animação quando a seção "Sobre Mim" entra na tela
-    if (sobreMimPosition < screenHeight * 0.75) {
-        sobreMim.classList.add("visible");
-        linhasSeparacao.classList.add("visible");
+        if (sobreMimPosition < screenHeight * 0.75) {
+            sobreMim.classList.add("visible");
+            linhasSeparacao.classList.add("visible");
+        }
+    } else {
+        console.warn("Elements not found:", {sobreMim, linhasSeparacao});
     }
 });
 

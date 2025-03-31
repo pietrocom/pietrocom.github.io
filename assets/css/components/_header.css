@@ -1,0 +1,212 @@
+/* ===== HEADER STYLES ===== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--cor-branca);
+    z-index: 1000;
+    box-shadow: var(--sombra);
+    transition: all 0.3s ease;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+/* Shrink effect - RESTORED */
+header.shrink {
+    padding: 5px 0;
+}
+
+header.shrink .header-content {
+    padding: 5px 30px;
+}
+
+header.shrink .initials-button {
+    transform: scale(0.9);
+}
+
+/* Initials button - FIXED POSITION */
+.initials-button {
+    position: relative;
+    left: 0; /* Remove negative margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cor-texto);
+    text-decoration: none;
+    border: 2px solid var(--cor-texto);
+    border-radius: 12px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    margin-right: 30px; /* Added proper spacing */
+}
+
+.initials-button:hover {
+    background-color: var(--cor-texto);
+    color: var(--cor-branca);
+}
+
+/* Navigation - RESTORED LAYOUT */
+nav {
+    flex-grow: 1;
+    margin-right: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+    padding: 0 10px;
+}
+
+/* Vertical separators - RESTORED */
+nav ul li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background-color: #ccc;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: bold;
+    transition: color 0.3s;
+    font-family: sans-serif;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: var(--cor-secundaria);
+}
+
+.social-icons {
+    display: flex !important; /* Force flex layout */
+    flex-direction: row !important; /* Explicit row direction */
+    align-items: center;
+    gap: 15px;
+    margin-left: 30px;
+    /* Reset any conflicting properties */
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.social-icons a {
+    color: var(--cor-texto);
+    font-size: 25px;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important; /* Remove fixed width */
+    height: auto !important; /* Remove fixed height */
+    margin: 0 !important; /* Reset margins */
+    padding: 0 !important; /* Reset padding */
+}
+
+/* Nuclear option to override any conflicts */
+.header-content > .social-icons {
+    display: flex !important;
+    flex-shrink: 0 !important;
+}
+
+.social-icons a:hover {
+    color: var(--cor-secundaria);
+    transform: translateY(-2px);
+}
+
+/* Mobile menu - RESTORED FUNCTIONALITY */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--cor-texto);
+    margin-left: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .header-content {
+        padding: 15px 20px;
+    }
+    
+    nav ul li {
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--cor-branca);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    nav ul.show {
+        display: flex;
+    }
+    
+    nav ul li:not(:last-child)::after {
+        display: none;
+    }
+    
+    nav ul li {
+        padding: 10px 0;
+    }
+    
+    .social-icons {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .initials-button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .social-icons {
+        gap: 10px;
+    }
+    
+    .social-icons a {
+        font-size: 20px;
+    }
+}

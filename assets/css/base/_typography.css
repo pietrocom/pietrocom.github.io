@@ -1,0 +1,65 @@
+/* _typography.css */
+
+/* ===== TIPOGRAFIA ===== */
+body {
+    font-family: 'Avenir Light', sans-serif; /* Fonte padrão */
+    line-height: 1.6;
+    color: var(--cor-texto);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lulo Clean', sans-serif; /* Fonte para títulos */
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem; /* 40px */
+}
+
+h2 {
+    font-size: 2rem; /* 32px */
+}
+
+h3 {
+    font-size: 1.75rem; /* 28px */
+}
+
+p {
+    margin-bottom: 1em;
+    font-size: 1rem;
+}
+
+/* Estilos específicos */
+.hero h1 {
+    font-size: 3rem; /* 48px */
+    font-weight: bold;
+    font-family: sans-serif; /* Sobrescreve se necessário */
+}
+
+.hero p {
+    font-size: 1.25rem; /* 20px */
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+.texto-moldura p {
+    font-size: 3.75rem; /* 60px */
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Classes utilitárias para textos */
+.text-center {
+    text-align: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-terciario {
+    color: var(--cor-terciaria);
+}

@@ -1,64 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site Pessoal</title>
+    <title>Pietro Comin - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:,">
     <script defer src="assets/js/script.js"></script>
-    <script src="https://kit.fontawesome.com/e144b520fb.js" crossorigin="anonymous"></script>
 </head>
-<body id="topo">
+<body id="top">
 
-    <div id="header-container"></div> <!-- O header será carregado dinamicamente -->
+    <div id="header-container"></div>
 
     <div class="hero">
         <div class="overlay"></div>
         <div class="content">
             <h1>PIETRO COMIN</h1>
-            <p>Estudante de Ciência da Computação <br> UFPR</p>
+            <p>Computer Science · UFPR</p>
         </div>
     </div>
 
-    <!-- Seção "sobre-mim" -->
-    <section id="sobre-mim" class="section"> 
-        <div class="sobre-mim-container">
-            <!-- Imagem com Moldura -->
-            <div class="imagem-container">
-                <img src="assets/images/ImagemCertaItalia.png" alt="Sua Foto">
-                <div class="texto-moldura">
-                    <p>SOBRE<br>MIM</p>
-                </div>
+    <!-- Refactored About Section -->
+    <section id="about" class="section">
+        <div class="about-title-container">
+            <h2 class="about-title">About</h2>
+        </div>
+
+        <div class="about-content-container">
+            <div class="about-text">
+                <p class="about-paragraph">
+                    Passionate about technology and innovation, I'm pursuing a Computer Science degree at UFPR, where I combine my entrepreneurial spirit with technical knowledge to transform ideas into efficient solutions.
+                </p>
+                <p class="about-paragraph">
+                    My goal is to contribute to a more innovative and sustainable future, using technology and strategic vision to promote social and economic development.
+                </p>
             </div>
 
-            <!-- Texto à Direita -->
-            <div class="texto-container">
-                <p>
-                    Apaixonado por tecnologia e inovação, curso Ciência da Computação na UFPR, onde busco unir meu espírito empreendedor ao conhecimento técnico para transformar ideias em soluções eficientes.
-                </p>
-                <p>
-                    Meu objetivo é contribuir para um futuro mais inovador e sustentável, utilizando a tecnologia e minha visão estratégica para promover desenvolvimento social e econômico.
-                </p>
-                <div class="interesses-container">
-                    <h3>Interesses:</h3>
-                    <ul>
-                        <li>Programação e desenvolvimento de soluções tecnológicas</li>
-                        <li>Investimentos e finanças</li>
-                        <li>Guitarrista e entusiasta de música</li>
-                        <li>Prática de esportes e busca por equilíbrio pessoal</li>
-                    </ul>
-                </div>
+            <div class="about-interests">
+                <h3 class="interests-title">Interests</h3>
+                <ul class="interests-list">
+                    <li class="interest-item">
+                        <i class="fas fa-code icon"></i>
+                        <span>Programming and development</span>
+                    </li>
+                    <li class="interest-item">
+                        <i class="fas fa-chart-line icon"></i>
+                        <span>Investments and finance</span>
+                    </li>
+                    <li class="interest-item">
+                        <i class="fas fa-music icon"></i>
+                        <span>Guitarist and music</span>
+                    </li>
+                    <li class="interest-item">
+                        <i class="fas fa-running icon"></i>
+                        <span>Sports and personal balance</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <div class="linhas-separacao">
-        <div class="linha-grossa"></div>
-        <div class="linha-fina"></div>
+    <div class="separation-lines">
+        <div class="thick-line"></div>
+        <div class="thin-line"></div>
     </div>
 
-    <div id="footer-container"></div> <!-- O footer será carregado dinamicamente -->
+    <!-- Call-to-Action Section -->
+    <section id="cta" class="section">
+        <div class="cta-container">
+        <h2 class="cta-title">Explore More</h2>
+        
+        <div class="cta-cards">
+            <!-- Resume Card -->
+            <a href="path/to/your/resume.pdf" class="cta-card" download>
+            <div class="card-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>Resume</h3>
+            <p>Download my full professional history</p>
+            <span class="cta-link">Download PDF →</span>
+            </a>
+            
+            <!-- Portfolio Card -->
+            <a href="portfolio.html" class="cta-card">
+            <div class="card-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Portfolio</h3>
+            <p>See my selected projects</p>
+            <span class="cta-link">View Projects →</span>
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
 
 </body>
 </html>

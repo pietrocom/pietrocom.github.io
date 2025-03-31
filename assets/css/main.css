@@ -1,0 +1,33 @@
+/* main.css */
+
+/* Importações base */
+@import url('./base/_reset.css');
+@import url('./base/_variables.css');  /* Deve vir antes de todos que usam variáveis */
+@import url('./base/_typography.css');
+
+/* Importações de componentes */
+@import url('./components/_buttons.css');
+@import url('./components/_header.css');
+@import url('./components/_footer.css');
+
+/* Importações de seções */
+@import url('./sections/_hero.css');
+@import url('./sections/_about.css');
+@import url('./sections/_cta.css');
+@import url('./sections/_portfolio.css');
+
+/* ===== FONTES ===== */
+@font-face {
+    font-family: 'Lulo Clean';
+    src: url('../fonts/LuloCleanW01-OneBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Light';
+    src: url('../fonts/avenir-light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

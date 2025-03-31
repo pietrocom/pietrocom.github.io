@@ -1,0 +1,18 @@
+/* _reset.css */
+
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Scroll suave para todos os links com âncora */
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    overflow-x: hidden;
+}

@@ -1,0 +1,160 @@
+/* _about.css */
+
+/* ===== ABOUT SECTION ===== */
+#about {
+    background-color: var(--cor-fundo);
+    padding: 80px 20px 100px;
+    position: relative;
+}
+
+/* Centered title */
+.about-title-container {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.about-title {
+    font-family: 'Lulo Clean', sans-serif;
+    font-size: 5rem;
+    color: var(--cor-branca);
+    font-variant: small-caps; /* May work if font supports it */
+    font-size: 4.9em; /* Slightly reduce size */
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 25px; /* Added for underline space */
+}
+
+/* Main underline */
+.about-title::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: -7px;
+    width: 100%;
+    height: 4px;
+    background: var(--cor-terciaria);
+}
+
+/* Secondary underline */
+.about-title::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -7px;
+    width: 100%;
+    height: 1px;
+    background: var(--cor-terciaria);
+    opacity: 0.5;
+}
+
+/* Rest of your existing about styles remain the same */
+.about-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Left text */
+.about-text {
+    padding-right: 40px;
+}
+
+.about-paragraph {
+    font-size: 1.1rem;
+    color: var(--cor-terciaria);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.about-paragraph::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background: var(--cor-terciaria);
+}
+
+/* Right interests */
+.about-interests {
+    background: rgba(235, 198, 97, 0.1);
+    padding: 30px;
+    border-left: 3px solid var(--cor-terciaria);
+}
+
+.interests-title {
+    font-family: 'Lulo Clean', sans-serif;
+    font-size: 1.8rem;
+    color: var(--cor-terciaria);
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.interests-title::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background: var(--cor-terciaria);
+}
+
+.interests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.interest-item {
+    font-size: 1.1rem;
+    color: var(--cor-branca);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s;
+}
+
+.interest-item:hover {
+    transform: translateX(10px);
+}
+
+.icon {
+    color: var(--cor-terciaria);
+    font-size: 1.3rem;
+    width: 25px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-title {
+        font-size: 3.5rem;
+    }
+    
+    .about-text {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    
+    .about-interests {
+        border-left: none;
+        border-top: 3px solid var(--cor-terciaria);
+        padding-top: 40px;
+    }
+}
