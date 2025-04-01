@@ -1,10 +1,8 @@
-/* _footer.css */
-
 /* ===== FOOTER STYLES ===== */
 footer {
     background-color: var(--cor-primaria);
     color: var(--cor-branca);
-    padding: 60px 20px 20px;
+    padding: 80px 20px 30px;
     position: relative;
     z-index: 100;
 }
@@ -14,13 +12,13 @@ footer {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px;
 }
 
 .footer-column {
     flex: 1;
-    min-width: 200px;
-    padding-right: 20px;
+    min-width: 220px;
+    padding-right: 25px;
     border-right: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -30,10 +28,15 @@ footer {
 }
 
 .footer-column h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
     color: var(--cor-terciaria);
     font-family: 'Lulo Clean', sans-serif;
+    letter-spacing: 1px;
+}
+
+.footer-column-bar {
+    margin-bottom: 20px !important;
 }
 
 .footer-column ul {
@@ -42,16 +45,17 @@ footer {
 }
 
 .footer-column ul li {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .footer-column ul li a {
     color: var(--cor-branca);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     display: inline-block;
-    padding: 2px 0;
+    padding: 3px 0;
     position: relative;
+    font-size: 1.05rem;
 }
 
 .footer-column ul li a::after {
@@ -60,9 +64,9 @@ footer {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1px;
+    height: 2px;
     background: var(--cor-secundaria);
-    transition: width 0.3s;
+    transition: width 0.3s ease-out;
 }
 
 .footer-column ul li a:hover,
@@ -76,38 +80,84 @@ footer {
 }
 
 .footer-column ul li i {
-    margin-right: 10px;
+    margin-right: 12px;
     color: var(--cor-secundaria);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
 }
 
+/* ===== SOCIAL ICONS SECTION ===== */
 .social-icons {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin: 25px 0;
 }
 
 .social-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    transition: all 0.3s ease;
 }
 
 .social-item a {
     color: var(--cor-branca);
     font-size: 1.5rem;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    display: flex;
+    width: 30px;
+    text-decoration: none;
 }
 
 .social-item a:hover {
-    color: var(--cor-secundaria);
+    transform: scale(1.1);
 }
 
+.social-item span {
+    color: var(--cor-branca);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Avenir Light', sans-serif;
+}
+
+.social-item:hover span {
+    color: var(--cor-terciaria);
+}
+
+/* Brand-specific icon colors */
+.social-item .fa-instagram {
+    color: #ffffff;
+}
+
+.social-item .fa-linkedin {
+    color: #ffffff;
+}
+
+.social-item .fa-github {
+    color: #ffffff;
+}
+
+/* Footer bottom section */
 .footer-bottom {
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.9rem;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 992px) {
+    .footer-content {
+        gap: 40px;
+    }
+    
+    .footer-column {
+        min-width: 200px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -115,6 +165,46 @@ footer {
         flex: 100%;
         border-right: none;
         padding-right: 0;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
+    }
+    
+    .social-icons {
+        margin: 20px 0;
+    }
+    
+    .social-item a {
+        font-size: 1.4rem;
+    }
+    
+    .social-item span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    footer {
+        padding: 60px 20px 25px;
+    }
+    
+    .footer-content {
+        gap: 30px;
+    }
+    
+    .footer-column h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .social-item a {
+        font-size: 1.3rem;
+    }
+    
+    .social-item span {
+        font-size: 0.95rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 40px;
+        font-size: 0.9rem;
     }
 }
