@@ -2,8 +2,7 @@
 
 /* ===== CTA SECTION ===== */
 #cta {
-    border: 2px solid white; /* Debug test */
-    background-color: var(--cor-primaria);
+    border: 2px solid white; 
     background-color: var(--cor-primaria);
     padding: 80px 20px;
     text-align: center;
