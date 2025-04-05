@@ -15,7 +15,7 @@ function loadComponent(id, file, callback) {
 document.addEventListener("DOMContentLoaded", function () {
     loadComponent("header-container", "header.html", function () {
         setupSmoothScroll(); // Configurar o scroll suave
-        setupSectionObserver(); // Configurar o observador de seções
+        setupMobileMenu(); // Configurar o menu mobile
     });
     loadComponent("footer-container", "footer.html");
 });
@@ -49,6 +49,12 @@ function setupSmoothScroll() {
                     
                     // Update URL without page reload
                     history.pushState(null, null, href);
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.querySelector('.mobile-menu');
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
                 } else if (targetId === 'top') {
                     // Special case for "back to top" links
                     smoothScrollTo(document.body);
@@ -59,7 +65,6 @@ function setupSmoothScroll() {
     });
 }
 
-// Update your existing smoothScrollTo function if needed
 function smoothScrollTo(targetElement) {
     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
     const startPosition = window.pageYOffset;
@@ -85,44 +90,34 @@ function smoothScrollTo(targetElement) {
     requestAnimationFrame(animation);
 }
 
-// Configurar o observador de seções
-function setupSectionObserver() {
-    const sections = document.querySelectorAll('section'); // Seleciona todas as seções
-    const navLinks = document.querySelectorAll('nav ul li a'); // Seleciona todos os links do menu
-
-    const options = {
-        root: null, // Observa a viewport
-        rootMargin: '0px',
-        threshold: 0.6 // 60% da seção precisa estar visível
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Remove a classe 'active' de todos os links
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                // Adiciona a classe 'active' ao link correspondente
-                const id = entry.target.getAttribute('id');
-                const correspondingLink = document.querySelector(`nav ul li a[href="#${id}"]`);
-                if (correspondingLink) {
-                    correspondingLink.classList.add('active');
-                }
+// Mobile Menu Functionality
+function setupMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && e.target !== menuToggle) {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
             }
         });
-    }, options);
+    }
+}
 
-    // Observa todas as seções
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Observa o topo da página (#topo)
-    const topo = document.getElementById('topo');
-    if (topo) {
-        observer.observe(topo);
+function toggleMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+        menuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
     }
 }
 
@@ -136,23 +131,11 @@ window.addEventListener("scroll", function () {
     }
 });
 
-// Menu Mobile
-document.addEventListener("click", function (event) {
-    const menu = document.querySelector("nav ul");
-    const toggle = document.getElementById("menu-toggle");
-    if (event.target === toggle) {
-        menu.classList.toggle("show");
-    } else if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        menu.classList.remove("show");
-    }
-});
-
 // Efeito de transição Hero - Sobre Mim e Linhas de Separação
 window.addEventListener("scroll", function () {
     const sobreMim = document.getElementById("about");
     const linhasSeparacao = document.querySelector(".separation-lines");
     
-    // Add robust null checks
     if (sobreMim && linhasSeparacao && sobreMim.classList && linhasSeparacao.classList) {
         const sobreMimPosition = sobreMim.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
@@ -161,8 +144,6 @@ window.addEventListener("scroll", function () {
             sobreMim.classList.add("visible");
             linhasSeparacao.classList.add("visible");
         }
-    } else {
-        console.warn("Elements not found:", {sobreMim, linhasSeparacao});
     }
 });
 
@@ -178,8 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    setupReloadButton(); // Tenta configurar o botão imediatamente
-
-    // Se o botão for carregado dinamicamente, aguarde e tente de novo
+    setupReloadButton();
     setTimeout(setupReloadButton, 500);
 });
