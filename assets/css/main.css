@@ -14,7 +14,7 @@
 @import url('./sections/_hero.css');
 @import url('./sections/_about.css');
 @import url('./sections/_cta.css');
-@import url('./sections/_portfolio.css');
+@import url('./sections/_portfolio.css'); /* <-- ADICIONADO AQUI */
 
 /* ===== FONTES ===== */
 @font-face {

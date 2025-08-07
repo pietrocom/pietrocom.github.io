@@ -4,36 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Pietro Comin</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/portfolio.css"> <!-- Estilos específicos do portfólio -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css"> 
+    
     <script defer src="assets/js/script.js"></script>
-    <script defer src="assets/js/portfolio.js"></script> <!-- Scripts específicos do portfólio -->
-    <script src="https://kit.fontawesome.com/e144b520fb.js" crossorigin="anonymous"></script>
 </head>
 <body id="topo">
 
-    <!-- Header Compartilhado -->
     <div id="header-container"></div>
 
-    <!-- Conteúdo do Portfólio -->
     <section id="portfolio" class="section">
         <div class="portfolio-container">
-            <h2>Meu Portfólio</h2>
-            <div class="portfolio-grid">
-                <!-- Exemplo de item do portfólio -->
-                <div class="portfolio-item">
-                    <img src="assets/images/projeto1.jpg" alt="Projeto 1">
-                    <h3>Projeto 1</h3>
-                    <p>Descrição breve do projeto.</p>
-                    <a href="#" class="btn">Ver Detalhes</a>
+            <div class="portfolio-title-container">
+                <h2 class="portfolio-title">Meus Projetos</h2>
+                <p class="portfolio-subtitle">Uma seleção de projetos que desenvolvi, diretamente do meu GitHub, ordenados pelos mais recentes.</p>
+            </div>
+
+            <div id="portfolio-grid" class="portfolio-grid">
+                <div id="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i> Carregando projetos do GitHub...
                 </div>
-                <!-- Adicione mais itens aqui -->
+            </div>
+            
+            <div id="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i> Ops! Não foi possível carregar os projetos. Tente novamente mais tarde.
             </div>
         </div>
     </section>
 
-    <!-- Footer Compartilhado -->
     <div id="footer-container"></div>
 
+    <script src="assets/js/portfolio.js"></script>
 </body>
 </html>

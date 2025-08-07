@@ -1,4 +1,4 @@
-// script.js
+// assets/js/script.js
 
 // Função para carregar HTML de outro arquivo
 function loadComponent(id, file, callback) {
@@ -11,86 +11,79 @@ function loadComponent(id, file, callback) {
         .catch(error => console.log('Erro ao carregar ' + file, error));
 }
 
-// Carregar Header e Footer
+// Carregar Header e Footer e depois configurar os scripts
 document.addEventListener("DOMContentLoaded", function () {
     loadComponent("header-container", "header.html", function () {
-        setupSmoothScroll(); // Configurar o scroll suave
-        setupMobileMenu(); // Configurar o menu mobile
+        // As funções de navegação agora são chamadas APÓS o header ser carregado
+        setupSmoothScroll();
+        setupMobileMenu();
     });
-    loadComponent("footer-container", "footer.html");
+    loadComponent("footer-container", "footer.html", function() {
+        // Garante que os links do footer também funcionem
+        setupSmoothScroll();
+    });
 });
 
-// Enhanced smooth scroll function
+// =========================================================================
+// === LÓGICA DE NAVEGAÇÃO REESCRITA (A CORREÇÃO ESTÁ AQUI) ===
+// =========================================================================
 function setupSmoothScroll() {
-    // Handle all navigation links (header and footer)
-    document.querySelectorAll('a[href^="#"], a[href^="/"], a[href^="."]').forEach(anchor => {
+    // Seleciona todos os links importantes da navegação
+    document.querySelectorAll('.desktop-nav a, .mobile-menu a, .footer-column a, .initials-button').forEach(anchor => {
+        // Evita adicionar o mesmo listener múltiplas vezes
+        if (anchor.dataset.listenerAttached) return;
+        anchor.dataset.listenerAttached = 'true';
+
         anchor.addEventListener('click', function(e) {
-            // Skip if target is external or has special attributes
+            // Ignora links que abrem em nova aba ou são para download
             if (this.hasAttribute('download') || this.getAttribute('target') === '_blank') {
                 return;
             }
-            
-            const href = this.getAttribute('href');
-            
-            // Handle internal page links (like portfolio.html)
-            if (href.includes('.html')) {
-                // Allow normal navigation for .html links
-                return;
-            }
-            
-            // Handle anchor links
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
+
+            // Constrói URLs completos para uma comparação segura
+            const targetUrl = new URL(this.href);
+            const currentUrl = new URL(window.location.href);
+
+            // Verifica se o caminho da URL é o mesmo (ex: /index.html vs /portfolio.html)
+            // A comparação ignora o hash (#)
+            const isSamePage = targetUrl.pathname === currentUrl.pathname;
+
+            // Se for um link para a MESMA PÁGINA e tiver um hash (#), faz a rolagem suave
+            if (isSamePage && targetUrl.hash) {
+                e.preventDefault(); // Previne o salto brusco do navegador
+                const targetId = targetUrl.hash.substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
                     smoothScrollTo(targetElement);
-                    
-                    // Update URL without page reload
-                    history.pushState(null, null, href);
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.querySelector('.mobile-menu');
-                    if (mobileMenu && mobileMenu.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                } else if (targetId === 'top') {
-                    // Special case for "back to top" links
-                    smoothScrollTo(document.body);
-                    history.pushState(null, null, '#top');
+                    history.pushState(null, null, targetUrl.hash);
+                }
+                
+                // Fecha o menu mobile se estiver aberto
+                const mobileMenu = document.querySelector('.mobile-menu');
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
                 }
             }
+            // Se for um link para OUTRA PÁGINA (ex: de portfolio.html para index.html#about),
+            // a condição 'if' acima será falsa. Nada acontece aqui, e o navegador
+            // segue seu comportamento padrão: carregar a nova página e rolar para a âncora.
         });
     });
 }
 
 function smoothScrollTo(targetElement) {
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 800;
-    let startTime = null;
+    const headerOffset = 90; // Espaço para o header fixo
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    function animation(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
 }
 
-// Mobile Menu Functionality
+// Mobile Menu Functionality (sem alterações)
 function setupMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -101,11 +94,9 @@ function setupMobileMenu() {
             toggleMobileMenu();
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!mobileMenu.contains(e.target) && e.target !== menuToggle) {
-                mobileMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
+            if (!mobileMenu.contains(e.target) && e.target !== menuToggle && mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
             }
         });
     }
@@ -121,44 +112,14 @@ function toggleMobileMenu() {
     }
 }
 
-// Redução do cabeçalho ao rolar
+// Redução do cabeçalho ao rolar (sem alterações)
 window.addEventListener("scroll", function () {
-    const header = document.getElementById("header");
-    if (window.scrollY > 50) {
-        header.classList.add("shrink");
-    } else {
-        header.classList.remove("shrink");
-    }
-});
-
-// Efeito de transição Hero - Sobre Mim e Linhas de Separação
-window.addEventListener("scroll", function () {
-    const sobreMim = document.getElementById("about");
-    const linhasSeparacao = document.querySelector(".separation-lines");
-    
-    if (sobreMim && linhasSeparacao && sobreMim.classList && linhasSeparacao.classList) {
-        const sobreMimPosition = sobreMim.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (sobreMimPosition < screenHeight * 0.75) {
-            sobreMim.classList.add("visible");
-            linhasSeparacao.classList.add("visible");
+    const header = document.querySelector("header");
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add("shrink");
+        } else {
+            header.classList.remove("shrink");
         }
     }
-});
-
-// Botao Iniciais
-document.addEventListener("DOMContentLoaded", function () {
-    function setupReloadButton() {
-        const initialsButton = document.querySelector('.initials-button');
-        if (initialsButton) {
-            initialsButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.location.reload();
-            });
-        }
-    }
-
-    setupReloadButton();
-    setTimeout(setupReloadButton, 500);
 });

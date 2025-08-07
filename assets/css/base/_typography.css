@@ -1,4 +1,4 @@
-/* _typography.css */
+/* assets/css/base/_typography.css */
 
 /* ===== TIPOGRAFIA ===== */
 body {
@@ -14,44 +14,52 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+/* --- TIPOGRAFIA FLUIDA COM CLAMP() --- */
+/* A fonte se ajustará suavemente entre um valor mínimo e máximo */
+
 h1 {
-    font-size: 2.5rem; /* 40px */
+    /* Mín: ~35px, Ideal: 5% da largura da tela + 1rem, Máx: ~56px */
+    font-size: clamp(2.2rem, 5vw + 1rem, 3.5rem);
 }
 
 h2 {
-    font-size: 2rem; /* 32px */
+    /* Mín: ~29px, Ideal: 4% da largura da tela + 1rem, Máx: ~48px */
+    font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
 }
 
 h3 {
-    font-size: 1.75rem; /* 28px */
+    /* Mín: ~24px, Ideal: 3vw + 1rem, Máx: ~40px */
+    font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);
 }
 
 p {
-    margin-bottom: 1em;
-    font-size: 1rem;
+    /* Mín: ~15px, Ideal: 0.5% da largura da tela + 0.8rem, Máx: ~18px */
+    font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.1rem);
 }
 
-/* Estilos específicos */
+/* Estilos específicos com clamp() */
 .hero h1 {
-    font-size: 3rem; /* 48px */
+    /* Ajustado para o Hero, um pouco maior */
+    font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
     font-weight: bold;
-    font-family: sans-serif; /* Sobrescreve se necessário */
+    font-family: sans-serif;
 }
 
 .hero p {
-    font-size: 1.25rem; /* 20px */
+    font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.5rem);
     font-style: italic;
     font-family: Georgia, serif;
 }
 
 .texto-moldura p {
-    font-size: 3.75rem; /* 60px */
+    /* Este pode permanecer grande, pois é um elemento de design específico */
+    font-size: clamp(2.5rem, 10vw, 3.75rem);
     font-weight: bold;
     line-height: 1.2;
     text-transform: uppercase;
 }
 
-/* Classes utilitárias para textos */
+/* Classes utilitárias para textos (sem alteração) */
 .text-center {
     text-align: center;
 }
