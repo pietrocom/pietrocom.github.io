@@ -62,6 +62,16 @@
     }
 }
 
+@media (max-width: 768px) {
+    .hero {
+        /* Remove o efeito parallax que causa problemas no mobile */
+        background-attachment: scroll;
+
+        /* Opcional: Centraliza melhor a imagem sem o parallax */
+        background-position: center center;
+    }
+}
+
 @media (max-width: 576px) {
     .hero {
         background-position: 30% center;
