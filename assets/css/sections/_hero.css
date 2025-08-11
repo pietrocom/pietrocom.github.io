@@ -44,7 +44,6 @@
 
 
 /* ===== ANIMAÇÃO DO GRADIENTE (DEFINIDA ANTES PARA GARANTIR O CARREGAMENTO) ===== */
-/* CORREÇÃO: Adicionada a versão com prefixo -webkit- para compatibilidade */
 @-webkit-keyframes gradient-animation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -60,11 +59,11 @@
 /* ===== ESTILOS MOBILE (TABLETS E CELULARES) ===== */
 @media (max-width: 768px) {
     .hero {
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        /* SOLUÇÃO: Novo gradiente com cores de alto contraste da sua paleta */
+        background: linear-gradient(-45deg, var(--cor-fundo), var(--cor-primaria), var(--cor-secundaria));
         background-size: 400% 400%;
         background-attachment: scroll;
         
-        /* CORREÇÃO: Adicionada a propriedade de animação com prefixo */
         -webkit-animation: gradient-animation 15s ease infinite;
         animation: gradient-animation 15s ease infinite;
     }
