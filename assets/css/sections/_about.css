@@ -2,10 +2,10 @@
 
 /* ===== ABOUT SECTION ===== */
 #about {
-    /* Alterado para combinar com a transição do hero no mobile */
+    position: relative;
+    z-index: 2; /* Garante que role por cima do hero */
     background-color: var(--cor-primaria);
     padding: 80px 20px 100px;
-    position: relative;
 }
 
 /* Centered title */

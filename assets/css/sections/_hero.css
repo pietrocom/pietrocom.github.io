@@ -2,12 +2,14 @@
 
 /* ===== HERO SECTION (ESTILO BASE) ===== */
 .hero {
-    width: 100%;
+    /* A mágica do parallax agora acontece aqui */
+    position: sticky;
+    top: 0;
     height: 100vh;
+    z-index: 1; /* Fica na camada de trás */
+
     display: flex;
     align-items: center;
-    position: relative;
-    z-index: 1;
 }
 
 .hero .overlay {
@@ -21,20 +23,18 @@
     position: relative;
     color: white;
     width: 100%;
-    z-index: 3;
+    z-index: 3; /* Texto fica na frente do overlay */
 }
 
-/* ===== ESTILOS PARA O EFEITO DE DIGITAÇÃO ===== */
+/* ... (o resto do seu CSS de digitação e responsivo continua aqui) ... */
 .typing-container {
     text-align: left;
 }
-
 .line {
     display: flex;
     align-items: baseline;
-    min-height: 1.2em; /* Evita que o layout pule */
+    min-height: 1.2em;
 }
-
 .cursor {
     display: inline-block;
     color: white;
@@ -42,20 +42,15 @@
     visibility: hidden;
     margin-left: 5px;
 }
-
 @keyframes blink {
     50% { opacity: 0; }
 }
 
-/* ================================================================= */
-/* ===== ESTILOS PARA TELAS PEQUENAS (<= 768px) - VISUAL TERMINAL ===== */
-/* ================================================================= */
+/* ===== ESTILOS PARA TELAS PEQUENAS (<= 768px) ===== */
 @media (max-width: 768px) {
     .hero {
         background-color: var(--cor-fundo);
     }
-
-    /* Efeito de Scanlines */
     .hero::after {
         content: ' ';
         display: block;
@@ -69,77 +64,30 @@
         pointer-events: none;
         animation: scanline-animation 10s linear infinite;
     }
-
     @keyframes scanline-animation {
         0% { background-position: 0 0, 0 0; }
         100% { background-position: 0 -400px, 0 0; }
     }
-
-    .hero .overlay {
-        display: none;
-    }
-
-    .hero .content {
-        justify-content: center;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    .typing-container {
-        text-align: center;
-    }
-
-    .line {
-        justify-content: center;
-    }
-
-    .typed-text {
-        font-family: 'Courier New', Courier, monospace;
-        font-weight: bold;
-    }
-
-    .typed-text.name {
-        font-size: clamp(2rem, 8vw, 2.8rem);
-        color: var(--cor-branca);
-    }
-
-    .typed-text.role {
-        font-size: clamp(1.2rem, 5vw, 1.5rem);
-        color: var(--cor-secundaria);
-    }
-
+    .hero .overlay { display: none; }
+    .hero .content { justify-content: center; text-align: center; padding: 0 20px; }
+    .typing-container { text-align: center; }
+    .line { justify-content: center; }
+    .typed-text { font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+    .typed-text.name { font-size: clamp(2rem, 8vw, 2.8rem); color: var(--cor-branca); }
+    .typed-text.role { font-size: clamp(1.2rem, 5vw, 1.5rem); color: var(--cor-secundaria); }
     .cursor.cursor-line1 { font-size: clamp(2rem, 8vw, 2.8rem); }
     .cursor.cursor-line2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
 }
 
-/* ================================================================= */
-/* ===== ESTILOS PARA TELAS GRANDES (> 768px) - VISUAL ORIGINAL ===== */
-/* ================================================================= */
+/* ===== ESTILOS PARA TELAS GRANDES (> 768px) ===== */
 @media (min-width: 769px) {
     .hero {
         background: url('../../images/ImagemNeveEditada.png') no-repeat center center/cover;
         background-attachment: fixed;
     }
-
-    .hero .content {
-        padding-left: 50%;
-    }
-
-    .typed-text.name {
-        font-size: 3.5rem;
-        font-weight: bold;
-        font-family: sans-serif;
-        line-height: 1.2;
-        color: white;
-    }
-
-    .typed-text.role {
-        font-size: 1.5rem;
-        font-style: italic;
-        font-family: Georgia, serif;
-        color: white;
-    }
-
+    .hero .content { padding-left: 50%; }
+    .typed-text.name { font-size: 3.5rem; font-weight: bold; font-family: sans-serif; line-height: 1.2; color: white; }
+    .typed-text.role { font-size: 1.5rem; font-style: italic; font-family: Georgia, serif; color: white; }
     .cursor.cursor-line1 { font-size: 3.5rem; }
     .cursor.cursor-line2 { font-size: 1.5rem; }
 }

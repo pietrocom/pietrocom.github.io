@@ -2,97 +2,99 @@
 
 /* ===== CTA SECTION ===== */
 #cta {
-    border: 2px solid white; 
+    position: relative;
+    z-index: 2; /* Garante que role por cima do hero */
+    border: 2px solid white;  
     background-color: var(--cor-primaria);
     padding: 80px 20px;
     text-align: center;
-  }
+}
   
-  .cta-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .cta-title {
-    font-family: 'Lulo Clean', sans-serif;
-    font-size: 3rem;
-    color: var(--cor-branca);
-    margin-bottom: 50px;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 25px;
-  }
-  
-  .cta-title::after {
-    content: "";
-    position: absolute;
-    bottom: 10px; /* Position above the subtle line */
-    left: -5px;
-    width: 100%;
-    height: 3px;
-    background: var(--cor-terciaria);
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: 'Lulo Clean', sans-serif;
+  font-size: 3rem;
+  color: var(--cor-branca);
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 25px;
+}
+
+.cta-title::after {
+  content: "";
+  position: absolute;
+  bottom: 10px; /* Position above the subtle line */
+  left: -5px;
+  width: 100%;
+  height: 3px;
+  background: var(--cor-terciaria);
 }
 
 .cta-title::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -5px;
-    width: 100%;
-    height: 1px;
-    background: var(--cor-terciaria);
-    opacity: 0.5;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--cor-terciaria);
+  opacity: 0.5;
 }
-  
-  .cta-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  
-  .cta-card {
-    flex: 1;
-    min-width: 280px;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 30px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: var(--cor-branca);
-  }
-  
-  .cta-card:hover {
-    background: rgba(235, 198, 97, 0.2);
-    transform: translateY(-5px);
-  }
-  
-  .card-icon {
-    font-size: 2.5rem;
-    color: var(--cor-terciaria);
-    margin-bottom: 20px;
-  }
-  
-  .cta-card h3 {
-    font-family: 'Lulo Clean', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .cta-card p {
-    opacity: 0.8;
-    margin-bottom: 20px;
-  }
-  
-  .cta-link {
-    display: inline-block;
-    color: var(--cor-secundaria);
-    font-weight: bold;
-    transition: transform 0.3s;
-  }
-  
-  .cta-card:hover .cta-link {
-    transform: translateX(5px);
-  }
+
+.cta-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cta-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--cor-branca);
+}
+
+.cta-card:hover {
+  background: rgba(235, 198, 97, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--cor-terciaria);
+  margin-bottom: 20px;
+}
+
+.cta-card h3 {
+  font-family: 'Lulo Clean', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.cta-card p {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.cta-link {
+  display: inline-block;
+  color: var(--cor-secundaria);
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+.cta-card:hover .cta-link {
+  transform: translateX(5px);
+}
