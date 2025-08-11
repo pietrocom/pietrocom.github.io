@@ -1,4 +1,4 @@
-/* _footer.css */
+/* assets/css/components/_footer.css */
 
 /* ===== FOOTER STYLES ===== */
 footer {
@@ -37,10 +37,6 @@ footer {
     letter-spacing: 1px;
 }
 
-.footer-column-bar {
-    margin-bottom: 20px !important;
-}
-
 .footer-column ul {
     list-style: none;
     padding: 0;
@@ -50,6 +46,45 @@ footer {
     margin-bottom: 10px;
 }
 
+.footer-column-bar {
+    margin-bottom: 20px !important;
+    transition: color 0.3s ease;
+}
+
+.footer-column-bar:hover {
+    color: var(--cor-terciaria);
+}
+
+/* ===== ESTILOS DOS ÍCONES (ESTRUTURA FINAL) ===== */
+/* Propriedades comuns a todos os ícones (cor, transição, etc.) */
+.footer-column ul li i,
+.social-item a i {
+    color: var(--cor-secundaria);
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+/* Tamanho específico para ícones de CONTATO */
+.footer-column ul li i {
+    font-size: 1.1rem;
+    width: 20px;
+    margin-right: 12px;
+}
+
+/* Tamanho específico para ícones de REDES SOCIAIS */
+.social-item a i {
+    font-size: 1.5rem; 
+    width: auto;
+}
+
+/* Efeito de "crescer" (hover) para todos os ícones */
+.footer-column-bar:hover i,
+.social-item:hover i {
+    transform: scale(1.2);
+}
+
+
+/* ===== QUICK LINKS ===== */
 .footer-column ul li a {
     color: var(--cor-branca);
     text-decoration: none;
@@ -58,17 +93,31 @@ footer {
     padding: 3px 0;
     position: relative;
     font-size: 1.05rem;
+    padding-left: 20px; /* Espaço para o marcador */
 }
 
+/* Efeito de underline */
 .footer-column ul li a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 20px;
     width: 0;
     height: 2px;
     background: var(--cor-secundaria);
     transition: width 0.3s ease-out;
+}
+
+/* Marcador (ponto) à esquerda dos Quick Links */
+.footer-column ul li a::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-secundaria);
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
 }
 
 .footer-column ul li a:hover,
@@ -78,15 +127,13 @@ footer {
 
 .footer-column ul li a:hover::after,
 .footer-column ul li a.active::after {
-    width: 100%;
+    width: calc(100% - 20px);
 }
 
-.footer-column ul li i {
-    margin-right: 12px;
-    color: var(--cor-secundaria);
-    font-size: 1.1rem;
-    width: 20px;
-    text-align: center;
+/* Efeito de hover para o marcador */
+.footer-column ul li a:hover::before {
+    color: var(--cor-branca);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* ===== SOCIAL ICONS SECTION ===== */
@@ -106,15 +153,10 @@ footer {
 
 .social-item a {
     color: var(--cor-branca);
-    font-size: 1.5rem;
     transition: all 0.3s ease;
     display: flex;
-    width: 30px;
+    align-items: center; 
     text-decoration: none;
-}
-
-.social-item a:hover {
-    transform: scale(1.1);
 }
 
 .social-item span {
@@ -128,19 +170,6 @@ footer {
     color: var(--cor-terciaria);
 }
 
-/* Brand-specific icon colors */
-.social-item .fa-instagram {
-    color: #ffffff;
-}
-
-.social-item .fa-linkedin {
-    color: #ffffff;
-}
-
-.social-item .fa-github {
-    color: #ffffff;
-}
-
 /* Footer bottom section */
 .footer-bottom {
     text-align: center;
@@ -151,7 +180,7 @@ footer {
     color: rgba(255,255,255,0.7);
 }
 
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
+/* ===== RESPONSIVE ADJUSTMENTS (Sem alterações) ===== */
 @media (max-width: 992px) {
     .footer-content {
         gap: 40px;
@@ -174,10 +203,6 @@ footer {
         margin: 20px 0;
     }
     
-    .social-item a {
-        font-size: 1.4rem;
-    }
-    
     .social-item span {
         font-size: 1rem;
     }
@@ -195,10 +220,6 @@ footer {
     .footer-column h3 {
         font-size: 1.5rem;
         margin-bottom: 20px;
-    }
-    
-    .social-item a {
-        font-size: 1.3rem;
     }
     
     .social-item span {
