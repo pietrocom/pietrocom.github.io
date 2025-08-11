@@ -1,5 +1,77 @@
 // assets/js/script.js
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Procura pelo container de digitação na página
+    const typingContainer = document.querySelector('.typing-container');
+    
+    if (typingContainer) {
+        // Elementos do DOM
+        const line1Text = document.getElementById('typed-line1');
+        const line2Text = document.getElementById('typed-line2');
+        const cursor1 = typingContainer.querySelector('.cursor.cursor-line1');
+        const cursor2 = typingContainer.querySelector('.cursor.cursor-line2');
+
+        // Configurações da Animação
+        const textLines = ["Pietro Comin", "Computer Science · UFPR"];
+        const typingSpeed = 120;
+        const deleteSpeed = 60;
+        const pauseAfterTyping = 1500; // Pausa após digitar cada linha
+        const pauseBeforeLoop = 2000; // Pausa antes de apagar tudo e recomeçar
+
+        // Função auxiliar para criar pausas
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        // Função para digitar um texto em um elemento
+        async function type(element, text) {
+            for (let i = 0; i < text.length; i++) {
+                element.textContent += text.charAt(i);
+                await sleep(typingSpeed);
+            }
+        }
+
+        // Função para apagar um texto de um elemento
+        async function erase(element) {
+            const text = element.textContent;
+            for (let i = text.length; i > 0; i--) {
+                element.textContent = text.substring(0, i - 1);
+                await sleep(deleteSpeed);
+            }
+        }
+
+        // Loop principal da animação
+        async function runTypingEffect() {
+            while (true) {
+                // Digita a primeira linha
+                cursor1.style.visibility = 'visible';
+                await type(line1Text, textLines[0]);
+                await sleep(pauseAfterTyping);
+                cursor1.style.visibility = 'hidden';
+
+                // Digita a segunda linha
+                cursor2.style.visibility = 'visible';
+                await type(line2Text, textLines[1]);
+                await sleep(pauseBeforeLoop);
+                cursor2.style.visibility = 'hidden';
+
+                // Apaga a segunda linha
+                cursor2.style.visibility = 'visible';
+                await erase(line2Text);
+                await sleep(pauseAfterTyping / 2);
+                cursor2.style.visibility = 'hidden';
+
+                // Apaga a primeira linha
+                cursor1.style.visibility = 'visible';
+                await erase(line1Text);
+                await sleep(pauseBeforeLoop / 2);
+                cursor1.style.visibility = 'hidden';
+            }
+        }
+
+        // Inicia o efeito
+        runTypingEffect();
+    }
+});
+
 // Função para carregar HTML de outro arquivo
 function loadComponent(id, file, callback) {
     fetch(file)

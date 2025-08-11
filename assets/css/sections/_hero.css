@@ -1,6 +1,7 @@
 /* _hero.css */
 
 /* ===== HERO SECTION (DESKTOP) ===== */
+/* Esta parte permanece como era originalmente, com a imagem de fundo */
 .hero {
     width: 100%;
     height: 100vh;
@@ -43,59 +44,110 @@
 }
 
 
-/* ===== ANIMAÇÃO DO GRADIENTE (DEFINIDA ANTES PARA GARANTIR O CARREGAMENTO) ===== */
-@-webkit-keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-
-/* ===== ESTILOS MOBILE (TABLETS E CELULARES) ===== */
+/* ===== ESTILOS MOBILE (TABLETS E CELULARES) - VERSÃO FINAL COM EFEITO DE DIGITAÇÃO ===== */
 @media (max-width: 768px) {
+    /* 1. Fundo sólido com efeito de "scan lines" */
     .hero {
-        /* SOLUÇÃO: Novo gradiente com cores de alto contraste da sua paleta */
-        background: linear-gradient(-45deg, var(--cor-fundo), var(--cor-primaria), var(--cor-secundaria));
-        background-size: 400% 400%;
-        background-attachment: scroll;
-        
-        -webkit-animation: gradient-animation 15s ease infinite;
-        animation: gradient-animation 15s ease infinite;
+        background: var(--cor-fundo);
+        position: relative;
+        overflow: hidden;
     }
 
+    .hero::after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+        ), linear-gradient(
+            90deg, rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06)
+        );
+        background-size: 100% 4px, 100% 100%;
+        z-index: 2;
+        pointer-events: none;
+        animation: scanline-animation 10s linear infinite;
+    }
+    
+    /* 2. Conteúdo centralizado para o texto */
     .hero .content {
-        padding-left: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0 20px;
+        text-align: left; /* O alinhamento será por container */
+        z-index: 3;
+    }
+    
+    .typing-container {
+        text-align: left;
+    }
+    
+    /* 3. Layout Flexbox para alinhar texto e cursor perfeitamente */
+    .line {
+        display: flex;
+        align-items: baseline; 
     }
 
-    .hero h1,
-    .hero p {
+    .typed-text {
+        color: var(--cor-branca);
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+    }
+
+    /* 4. Fontes com tamanhos diferentes */
+    .typed-text.name {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    .typed-text.role {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        color: var(--cor-secundaria);
+    }
+
+    /* 5. Cursor com cor e tamanho corretos */
+    .cursor {
         display: inline-block;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        backdrop-filter: blur(3px);
+        color: var(--cor-branca); 
+        animation: blink 0.8s infinite;
+        visibility: hidden;
+        margin-left: 2px;
+    }
+
+    .cursor.cursor-line1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .cursor.cursor-line2 {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
     }
 }
 
 
-/* ===== ESTILOS MOBILE (CELULARES PEQUENOS) ===== */
+/* ===== ESTILOS PARA CELULARES AINDA MENORES (SE NECESSÁRIO) ===== */
 @media (max-width: 576px) {
-    .hero .content {
-        padding-left: 10%;
-        padding-right: 10%;
-        text-align: center;
-    }
+    /* Mantivemos esta seção caso queira fazer ajustes finos adicionais
+       para as telas menores no futuro. Por enquanto, as regras acima
+       já são responsivas o suficiente. */
+}
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
 
-    .hero p {
-        font-size: 1.2rem;
+/* ===== ANIMAÇÕES (KEYFRAMES) ===== */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@keyframes scanline-animation {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: 0 -400px, 0 0;
     }
 }
