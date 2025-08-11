@@ -2,7 +2,8 @@
 
 /* ===== ABOUT SECTION ===== */
 #about {
-    background-color: var(--cor-fundo);
+    /* Alterado para combinar com a transição do hero no mobile */
+    background-color: var(--cor-primaria);
     padding: 80px 20px 100px;
     position: relative;
 }

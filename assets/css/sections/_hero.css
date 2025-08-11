@@ -1,16 +1,14 @@
 /* _hero.css */
 
-/* ===== HERO SECTION (DESKTOP) ===== */
-/* Esta parte permanece como era originalmente, com a imagem de fundo */
+/* ===== HERO SECTION (ESTILO BASE) ===== */
 .hero {
     width: 100%;
     height: 100vh;
-    background: url('../../images/ImagemNeveEditada.png') no-repeat center center/cover;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 .hero .overlay {
@@ -23,131 +21,153 @@
 .hero .content {
     position: relative;
     color: white;
-    padding-left: 50%;
-    text-align: left;
     width: 100%;
+    z-index: 3;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+/* ===== ESTILOS PARA O EFEITO DE DIGITAÇÃO ===== */
+.typing-container {
+    text-align: left;
 }
 
-.hero p {
-    font-size: 1.5rem;
-    font-style: italic;
-    font-family: Georgia, serif;
-    margin-top: 0;
+.line {
+    display: flex;
+    align-items: baseline;
+    min-height: 1.2em; /* Evita que o layout pule */
 }
 
+.cursor {
+    display: inline-block;
+    color: white;
+    animation: blink 0.8s infinite;
+    visibility: hidden;
+    margin-left: 5px;
+}
 
-/* ===== ESTILOS MOBILE (TABLETS E CELULARES) - VERSÃO FINAL COM EFEITO DE DIGITAÇÃO ===== */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ================================================================= */
+/* ===== ESTILOS PARA TELAS PEQUENAS (<= 768px) - VISUAL TERMINAL ===== */
+/* ================================================================= */
 @media (max-width: 768px) {
-    /* 1. Fundo sólido com efeito de "scan lines" */
     .hero {
-        background: var(--cor-fundo);
-        position: relative;
-        overflow: hidden;
+        background-color: var(--cor-fundo);
     }
 
+    /* Efeito de Scanlines */
     .hero::after {
         content: ' ';
         display: block;
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(
-            rgba(18, 16, 16, 0) 50%,
-            rgba(0, 0, 0, 0.25) 50%
-        ), linear-gradient(
-            90deg, rgba(255, 0, 0, 0.06),
-            rgba(0, 255, 0, 0.02),
-            rgba(0, 0, 255, 0.06)
-        );
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                          linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
         background-size: 100% 4px, 100% 100%;
         z-index: 2;
         pointer-events: none;
         animation: scanline-animation 10s linear infinite;
     }
-    
-    /* 2. Conteúdo centralizado para o texto */
+
+    @keyframes scanline-animation {
+        0% { background-position: 0 0, 0 0; }
+        100% { background-position: 0 -400px, 0 0; }
+    }
+
+    .hero .overlay {
+        display: none; /* Overlay não é necessário com o fundo escuro */
+    }
+
     .hero .content {
-        display: flex;
         justify-content: center;
-        align-items: center;
-        width: 100%;
+        text-align: center;
         padding: 0 20px;
-        text-align: left; /* O alinhamento será por container */
-        z-index: 3;
     }
-    
+
     .typing-container {
-        text-align: left;
+        text-align: center;
     }
-    
-    /* 3. Layout Flexbox para alinhar texto e cursor perfeitamente */
+
     .line {
-        display: flex;
-        align-items: baseline; 
+        justify-content: center;
     }
 
     .typed-text {
-        color: var(--cor-branca);
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
     }
 
-    /* 4. Fontes com tamanhos diferentes */
     .typed-text.name {
         font-size: clamp(2rem, 8vw, 2.8rem);
+        color: var(--cor-branca);
     }
+
     .typed-text.role {
         font-size: clamp(1.2rem, 5vw, 1.5rem);
         color: var(--cor-secundaria);
     }
 
-    /* 5. Cursor com cor e tamanho corretos */
-    .cursor {
-        display: inline-block;
-        color: var(--cor-branca); 
-        animation: blink 0.8s infinite;
-        visibility: hidden;
-        margin-left: 2px;
+    .cursor.cursor-line1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+    .cursor.cursor-line2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+
+    /* Transição de forma */
+    .hero-divider {
+        display: block;
+        position: absolute;
+        bottom: -1px; left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+        z-index: 2;
     }
 
-    .cursor.cursor-line1 {
-        font-size: clamp(2rem, 8vw, 2.8rem);
+    .hero-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 100px;
     }
 
-    .cursor.cursor-line2 {
-        font-size: clamp(1.2rem, 5vw, 1.5rem);
+    .hero-divider .shape-fill {
+        fill: var(--cor-primaria);
     }
 }
 
-
-/* ===== ESTILOS PARA CELULARES AINDA MENORES (SE NECESSÁRIO) ===== */
-@media (max-width: 576px) {
-    /* Mantivemos esta seção caso queira fazer ajustes finos adicionais
-       para as telas menores no futuro. Por enquanto, as regras acima
-       já são responsivas o suficiente. */
-}
-
-
-/* ===== ANIMAÇÕES (KEYFRAMES) ===== */
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-@keyframes scanline-animation {
-    0% {
-        background-position: 0 0, 0 0;
+/* ================================================================= */
+/* ===== ESTILOS PARA TELAS GRANDES (> 768px) - VISUAL ORIGINAL ===== */
+/* ================================================================= */
+@media (min-width: 769px) {
+    .hero {
+        background: url('../../images/ImagemNeveEditada.png') no-repeat center center/cover;
+        background-attachment: fixed;
     }
-    100% {
-        background-position: 0 -400px, 0 0;
+
+    .hero .content {
+        padding-left: 50%;
+    }
+
+    .typed-text.name {
+        font-size: 3.5rem;
+        font-weight: bold;
+        font-family: sans-serif;
+        line-height: 1.2;
+        color: white;
+    }
+
+    .typed-text.role {
+        font-size: 1.5rem;
+        font-style: italic;
+        font-family: Georgia, serif;
+        color: white;
+    }
+
+    .cursor.cursor-line1 { font-size: 3.5rem; }
+    .cursor.cursor-line2 { font-size: 1.5rem; }
+
+    .hero-divider {
+        display: none;
     }
 }
