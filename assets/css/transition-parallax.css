@@ -1,0 +1,47 @@
+/* --- TRANSIÇÃO PARA TELAS PEQUENAS (<= 768px) --- */
+/* A seção 'about' rola por cima da 'hero' */
+@media (max-width: 768px) {
+    .parallax-wrapper {
+        position: relative;
+        height: 200vh;
+    }
+    .parallax-wrapper .hero {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        z-index: 1; /* Camada de baixo */
+    }
+    .parallax-wrapper #about {
+        position: absolute;
+        top: 100vh;
+        height: 100vh;
+        width: 100%;
+        z-index: 2; /* Camada de cima, que rola sobre a hero */
+        background-color: var(--cor-primaria);
+    }
+}
+
+/* --- TRANSIÇÃO PARA TELAS GRANDES (> 768px) --- */
+/* A seção 'hero' (com imagem e texto) fica fixa enquanto 'about' rola por cima */
+@media (min-width: 769px) {
+    .parallax-wrapper {
+        position: relative;
+        /* A altura é automática, baseada no conteúdo */
+    }
+
+    /* A mágica acontece aqui: */
+    .parallax-wrapper .hero {
+        position: sticky; /* Gruda no topo do viewport */
+        top: 0;
+        height: 100vh;
+        z-index: 1; /* Fica como camada de fundo */
+    }
+
+    .parallax-wrapper #about {
+        position: relative; /* Necessário para o z-index funcionar */
+        z-index: 2; /* Fica na frente da 'hero', rolando por cima */
+        /* A cor de fundo é crucial para cobrir a seção hero ao rolar */
+        background-color: var(--cor-primaria);
+    }
+}

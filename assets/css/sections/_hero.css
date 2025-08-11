@@ -8,7 +8,6 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    overflow: hidden;
 }
 
 .hero .overlay {
@@ -77,7 +76,7 @@
     }
 
     .hero .overlay {
-        display: none; /* Overlay não é necessário com o fundo escuro */
+        display: none;
     }
 
     .hero .content {
@@ -111,29 +110,6 @@
 
     .cursor.cursor-line1 { font-size: clamp(2rem, 8vw, 2.8rem); }
     .cursor.cursor-line2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
-
-    /* Transição de forma */
-    .hero-divider {
-        display: block;
-        position: absolute;
-        bottom: -1px; left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        transform: rotate(180deg);
-        z-index: 2;
-    }
-
-    .hero-divider svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 100px;
-    }
-
-    .hero-divider .shape-fill {
-        fill: var(--cor-primaria);
-    }
 }
 
 /* ================================================================= */
@@ -166,8 +142,4 @@
 
     .cursor.cursor-line1 { font-size: 3.5rem; }
     .cursor.cursor-line2 { font-size: 1.5rem; }
-
-    .hero-divider {
-        display: none;
-    }
 }

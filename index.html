@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- index.html para a versão PARALLAX -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,8 @@
     <title>Pietro Comin - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Adicione o CSS da transição aqui -->
+    <link rel="stylesheet" href="assets/css/transition-parallax.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="data:,">
     <script src="assets/js/script.js"></script>
@@ -16,100 +18,85 @@
 
     <div id="header-container"></div>
 
-    <div class="hero">
-        <div class="overlay"></div>
-        <div class="content">
-            <div class="typing-container">
-                <div class="line">
-                    <span id="typed-line1" class="typed-text name"></span><span class="cursor cursor-line1">|</span>
-                </div>
-                <div class="line">
-                    <span id="typed-line2" class="typed-text role"></span><span class="cursor cursor-line2">|</span>
+    <!-- Wrapper para o efeito parallax -->
+    <div class="parallax-wrapper">
+        <div class="hero">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="typing-container">
+                    <div class="line">
+                        <span id="typed-line1" class="typed-text name"></span><span class="cursor cursor-line1">|</span>
+                    </div>
+                    <div class="line">
+                        <span id="typed-line2" class="typed-text role"></span><span class="cursor cursor-line2">|</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- V-- DIVISOR DE FORMA PARA A TRANSIÇÃO NO MOBILE --V -->
-        <div class="hero-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31.88,765.1,14.42,720.85,5.1,658.84,4.22,607.34,14.48,422.66,46.12,256.34,105.77,150.49,120H0V0H1200V0H985.66Z" class="shape-fill"></path>
-            </svg>
-        </div>
+
+        <section id="about" class="section">
+            <div class="about-title-container">
+                <h2 class="about-title">About</h2>
+            </div>
+            <div class="about-content-container">
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        Passionate about technology and innovation, I'm pursuing a Computer Science degree at UFPR, where I combine my entrepreneurial spirit with technical knowledge to transform ideas into efficient solutions.
+                    </p>
+                    <p class="about-paragraph">
+                        My goal is to contribute to a more innovative and sustainable future, using technology and strategic vision to promote social and economic development.
+                    </p>
+                </div>
+    
+                <div class="about-interests">
+                    <h3 class="interests-title">Interests</h3>
+                    <ul class="interests-list">
+                        <li class="interest-item">
+                            <i class="fas fa-code icon"></i>
+                            <span>Programming and development</span>
+                        </li>
+                        <li class="interest-item">
+                            <i class="fas fa-chart-line icon"></i>
+                            <span>Investments and finance</span>
+                        </li>
+                        <li class="interest-item">
+                            <i class="fas fa-music icon"></i>
+                            <span>Guitarist and music</span>
+                        </li>
+                        <li class="interest-item">
+                            <i class="fas fa-running icon"></i>
+                            <span>Sports and personal balance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Refactored About Section -->
-    <section id="about" class="section">
-        <div class="about-title-container">
-            <h2 class="about-title">About</h2>
-        </div>
-
-        <div class="about-content-container">
-            <div class="about-text">
-                <p class="about-paragraph">
-                    Passionate about technology and innovation, I'm pursuing a Computer Science degree at UFPR, where I combine my entrepreneurial spirit with technical knowledge to transform ideas into efficient solutions.
-                </p>
-                <p class="about-paragraph">
-                    My goal is to contribute to a more innovative and sustainable future, using technology and strategic vision to promote social and economic development.
-                </p>
-            </div>
-
-            <div class="about-interests">
-                <h3 class="interests-title">Interests</h3>
-                <ul class="interests-list">
-                    <li class="interest-item">
-                        <i class="fas fa-code icon"></i>
-                        <span>Programming and development</span>
-                    </li>
-                    <li class="interest-item">
-                        <i class="fas fa-chart-line icon"></i>
-                        <span>Investments and finance</span>
-                    </li>
-                    <li class="interest-item">
-                        <i class="fas fa-music icon"></i>
-                        <span>Guitarist and music</span>
-                    </li>
-                    <li class="interest-item">
-                        <i class="fas fa-running icon"></i>
-                        <span>Sports and personal balance</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
+    <!-- O resto do seu site continua aqui -->
     <div class="separation-lines">
         <div class="thick-line"></div>
         <div class="thin-line"></div>
     </div>
-
-    <!-- Call-to-Action Section -->
     <section id="cta" class="section">
         <div class="cta-container">
-        <h2 class="cta-title">Explore More</h2>
-        
-        <div class="cta-cards">
-            <!-- Resume Card -->
-            <a href="path/to/your/resume.pdf" class="cta-card" download>
-            <div class="card-icon">
-                <i class="fas fa-file-alt"></i>
+            <h2 class="cta-title">Explore More</h2>
+            <div class="cta-cards">
+                <a href="path/to/your/resume.pdf" class="cta-card" download>
+                    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Resume</h3>
+                    <p>Download my full professional history</p>
+                    <span class="cta-link">Download PDF →</span>
+                </a>
+                <a href="portfolio.html" class="cta-card">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Portfolio</h3>
+                    <p>See my selected projects</p>
+                    <span class="cta-link">View Projects →</span>
+                </a>
             </div>
-            <h3>Resume</h3>
-            <p>Download my full professional history</p>
-            <span class="cta-link">Download PDF →</span>
-            </a>
-            
-            <!-- Portfolio Card -->
-            <a href="portfolio.html" class="cta-card">
-            <div class="card-icon">
-                <i class="fas fa-briefcase"></i>
-            </div>
-            <h3>Portfolio</h3>
-            <p>See my selected projects</p>
-            <span class="cta-link">View Projects →</span>
-            </a>
-        </div>
         </div>
     </section>
-
     <div id="footer-container"></div>
 
 </body>
