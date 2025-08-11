@@ -4,7 +4,6 @@
 .hero {
     width: 100%;
     height: 100vh;
-    /* Fundo padrão para Desktop */
     background: url('../../images/ImagemNeveEditada.png') no-repeat center center/cover;
     background-attachment: fixed;
     display: flex;
@@ -44,21 +43,36 @@
 }
 
 
+/* ===== ANIMAÇÃO DO GRADIENTE (DEFINIDA ANTES PARA GARANTIR O CARREGAMENTO) ===== */
+/* CORREÇÃO: Adicionada a versão com prefixo -webkit- para compatibilidade */
+@-webkit-keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
 /* ===== ESTILOS MOBILE (TABLETS E CELULARES) ===== */
 @media (max-width: 768px) {
-    /* AQUI COMEÇA A MÁGICA: Substituímos a imagem pelo gradiente */
     .hero {
-        background: linear-gradient(-45deg, var(--cor-primaria), var(--cor-fundo), #232a3b, var(--cor-primaria));
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         background-size: 400% 400%;
+        background-attachment: scroll;
+        
+        /* CORREÇÃO: Adicionada a propriedade de animação com prefixo */
+        -webkit-animation: gradient-animation 15s ease infinite;
         animation: gradient-animation 15s ease infinite;
-        background-attachment: scroll; /* Remove o 'fixed' que não funciona bem no mobile */
     }
 
     .hero .content {
-        padding-left: 15%; /* Ajusta o posicionamento do texto */
+        padding-left: 15%;
     }
 
-    /* Mantém a caixa de fundo para o texto garantir a legibilidade */
     .hero h1,
     .hero p {
         display: inline-block;
@@ -73,7 +87,6 @@
 /* ===== ESTILOS MOBILE (CELULARES PEQUENOS) ===== */
 @media (max-width: 576px) {
     .hero .content {
-        /* Centraliza todo o conteúdo para telas bem pequenas */
         padding-left: 10%;
         padding-right: 10%;
         text-align: center;
@@ -85,19 +98,5 @@
 
     .hero p {
         font-size: 1.2rem;
-    }
-}
-
-
-/* ===== ANIMAÇÃO DO GRADIENTE ===== */
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
     }
 }
