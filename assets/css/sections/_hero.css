@@ -1,9 +1,10 @@
 /* _hero.css */
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION (DESKTOP) ===== */
 .hero {
     width: 100%;
     height: 100vh;
+    /* Fundo padrão para Desktop */
     background: url('../../images/ImagemNeveEditada.png') no-repeat center center/cover;
     background-attachment: fixed;
     display: flex;
@@ -42,16 +43,22 @@
     margin-top: 0;
 }
 
-/* Mobile styles */
+
+/* ===== ESTILOS MOBILE (TABLETS E CELULARES) ===== */
 @media (max-width: 768px) {
+    /* AQUI COMEÇA A MÁGICA: Substituímos a imagem pelo gradiente */
     .hero {
-        background-position: 25% center;
+        background: linear-gradient(-45deg, var(--cor-primaria), var(--cor-fundo), #232a3b, var(--cor-primaria));
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+        background-attachment: scroll; /* Remove o 'fixed' que não funciona bem no mobile */
     }
-    
+
     .hero .content {
-        padding-left: 15%;
+        padding-left: 15%; /* Ajusta o posicionamento do texto */
     }
-    
+
+    /* Mantém a caixa de fundo para o texto garantir a legibilidade */
     .hero h1,
     .hero p {
         display: inline-block;
@@ -62,32 +69,35 @@
     }
 }
 
-@media (max-width: 768px) {
-    .hero {
-        /* Remove o efeito parallax que causa problemas no mobile */
-        background-attachment: scroll;
 
-        /* Opcional: Centraliza melhor a imagem sem o parallax */
-        background-position: center center;
-    }
-}
-
+/* ===== ESTILOS MOBILE (CELULARES PEQUENOS) ===== */
 @media (max-width: 576px) {
-    .hero {
-        background-position: 30% center;
-    }
-    
     .hero .content {
+        /* Centraliza todo o conteúdo para telas bem pequenas */
         padding-left: 10%;
         padding-right: 10%;
         text-align: center;
     }
-    
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero p {
         font-size: 1.2rem;
+    }
+}
+
+
+/* ===== ANIMAÇÃO DO GRADIENTE ===== */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
