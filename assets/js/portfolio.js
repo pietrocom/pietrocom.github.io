@@ -53,7 +53,7 @@ async function fetchGithubProjects(username, extraReposList = []) {
             {
                 id: 'deep-hochuli-research',
                 name: "DeepHochuli (Undergrad Research)", 
-                html_url: "assets/docs/relatórioIC.pdf", 
+                html_url: "assets/docs/relatorioIC.pdf", 
                 
                 description: "Investigating the singularity of ReLU at z=0 and its impact on Deep CNN training dynamics. This research analyzes how numerical precision (FP32/FP64) and hardware arithmetic influence gradient flow and neuron death near the origin.",
                 
