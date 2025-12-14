@@ -48,12 +48,15 @@ async function fetchGithubProjects(username, extraReposList = []) {
         // Remove nulos (caso algum repo extra tenha falhado)
         const validExtraRepos = extraRepos.filter(repo => repo !== null);
 
+        // --- SEU PROJETO MANUAL ---
         const manualProjects = [
             {
                 id: 'deep-hochuli-research',
                 name: "DeepHochuli (Undergrad Research)", 
-                html_url: "/research/deephochuli-analysis.html", 
-                description: "Investigating the impact of numerical precision (FP16/FP32/FP64) and ReLU non-differentiability on neuron death phenomena in Deep CNNs. Analyzing floating-point absorption and gradient flow.",
+                html_url: "assets/docs/relatórioIC.pdf", 
+                
+                description: "Investigating the singularity of ReLU at z=0 and its impact on Deep CNN training dynamics. This research analyzes how numerical precision (FP32/FP64) and hardware arithmetic influence gradient flow and neuron death near the origin.",
+                
                 stargazers_count: "🔒", 
                 forks_count: 0,
                 language: "Python (PyTorch)",
@@ -63,19 +66,16 @@ async function fetchGithubProjects(username, extraReposList = []) {
         ];
 
         // 3. Junta tudo em uma única lista
-        let allProjects = [...userRepos, ...validExtraRepos];
+        let allProjects = [...manualProjects, ...userRepos, ...validExtraRepos];
 
-        // 4. Remove duplicatas (caso você tenha colocado seu próprio repo na lista extra)
-        // e aplica o filtro de fork/descrição
-        // Nota: Permitimos repos extras mesmo se não tiverem descrição, se você quiser forçar, mantenha a lógica antiga.
+        // 4. Remove duplicatas e aplica filtros
         const filteredProjects = allProjects.filter((project, index, self) => 
             index === self.findIndex((t) => t.id === project.id) && // Remove duplicatas por ID
-            !project.fork && // Remove forks (se quiser mostrar forks, remova essa linha)
-            project.description // Remove projetos sem descrição
+            !project.fork && 
+            project.description 
         );
 
         // 5. Ordena novamente por data de atualização (mais recente primeiro)
-        // Isso é necessário porque misturamos duas fontes de dados
         filteredProjects.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
         // Pega apenas os 9 primeiros após a mistura
@@ -103,6 +103,8 @@ async function fetchGithubProjects(username, extraReposList = []) {
                             </div>`;
         } else {
             projects.forEach(project => {
+                // Lógica para abrir PDF em nova aba ou link normal
+                // Se for o PDF manual, garantimos que funcione bem
                 projectsHTML += `
                     <a href="${project.html_url}" target="_blank" rel="noopener noreferrer" class="portfolio-card">
                         <div class="card-header">
