@@ -48,21 +48,19 @@ async function fetchGithubProjects(username, extraReposList = []) {
         // Remove nulos (caso algum repo extra tenha falhado)
         const validExtraRepos = extraRepos.filter(repo => repo !== null);
 
-        /*
         const manualProjects = [
             {
-                id: 101, // ID fictício para não duplicar
-                name: "Private",
-                html_url: "https://meusite.com/projeto-privado", // Link externo ou #
-                description: "Versão privada e avançada do sistema de concierge com dados sensíveis.",
-                stargazers_count: 0,  // Número estático
-                forks_count: 0,       // Número estático
-                language: "Python",
+                id: 'deep-hochuli-research',
+                name: "DeepHochuli (Undergrad Research)", 
+                html_url: "/research/deephochuli-analysis.html", 
+                description: "Investigating the impact of numerical precision (FP16/FP32/FP64) and ReLU non-differentiability on neuron death phenomena in Deep CNNs. Analyzing floating-point absorption and gradient flow.",
+                stargazers_count: "🔒", 
+                forks_count: 0,
+                language: "Python (PyTorch)",
                 fork: false,
-                pushed_at: "2025-12-15T10:00:00Z" // Data recente para aparecer no topo (Ano-Mês-Dia)
+                pushed_at: new Date().toISOString() 
             }
         ];
-        */
 
         // 3. Junta tudo em uma única lista
         let allProjects = [...userRepos, ...validExtraRepos];
